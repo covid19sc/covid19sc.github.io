@@ -11,7 +11,7 @@
 
 
 
-<title>Formato de submissão</title>
+<title>Equipe</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
@@ -256,75 +253,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
-
-</style>
-
-
 
 </head>
 
@@ -332,16 +260,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -390,88 +308,22 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Formato de submissão</h1>
+<h1 class="title toc-ignore">Equipe</h1>
 
 </div>
 
 
-<p>Ver referência de como submeter o documento.</p>
-<div id="título-1" class="section level1">
-<h1>Título 1</h1>
-<p>Texto no corpo do texto, texto, texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto.</p>
-<div id="título-2" class="section level2">
-<h2>Título 2</h2>
-<p>Texto no corpo do texto, texto, texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto.</p>
-<div id="título-3" class="section level3">
-<h3>Título 3</h3>
-<p>Texto no corpo do texto, texto, texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto texto, texto.</p>
-</div>
-</div>
-</div>
-<div id="equações" class="section level1">
-<h1>Equações</h1>
-<p>As equações devem estar no formato LaTex;</p>
-<p>As equações inline deve estar entre ($), exemplo: <span class="math inline">\(y = ax + b\)</span></p>
-<p>As equações em destaque deve estar entre dois (), exemplo</p>
-<pre class="css"><code>$$
-y = \alpha x + \beta
-$$</code></pre>
-<style type="text/css">
-$$
-y = \alpha x + \beta
-$$
-</style>
-<p><span class="math display">\[
-y = \alpha x + \beta
-\]</span></p>
-<p>ou ainda</p>
-<pre class="css"><code>$$
-\begin{aligned}
-y_1 = \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 = \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-$$</code></pre>
-<style type="text/css">
-$$
-\begin{aligned}
-y_1 = \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 = \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-$$
-</style>
-<p><span class="math display">\[
-\begin{aligned}
-y_1 = \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 = \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-\]</span></p>
-<p>ou ainda com alinhamento utilizando o marcado &amp;</p>
-<pre class="css"><code>$$
-\begin{aligned}
-y_1 &amp;= \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 &amp;= \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-$$</code></pre>
-<style type="text/css">
-$$
-\begin{aligned}
-y_1 &= \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 &= \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-$$
-</style>
-<p><span class="math display">\[
-\begin{aligned}
-y_1 &amp;= \alpha_1 x + \beta_1 \\
-y_2 + b -c + 2 &amp;= \alpha_2 x + \beta_2  - \frac{a}{b} - \sum_{i=1}^{n}{x_i} - \int_{0}^{\infty}{e^{-x^2}dx}\\
-\end{aligned}
-\]</span></p>
-</div>
+<ul>
+<li>André Lourenço Nogueira Eng. Química/MEP/UNIVILLE (Joinville) - <a href="http://lattes.cnpq.br/2410902090669075">cv-lattes</a></li>
+<li>André Wust Zibetti INE/CTC/UFSC (Florianópolis) - <a href="http://lattes.cnpq.br/4148620280683594">cv-lattes</a></li>
+<li>Bruno A. M. Carciofi EQA/CTC/UFSC (Florianópolis) - <a href="http://lattes.cnpq.br/5395732758179393">cv-lattes</a></li>
+<li>Luiz Rafael dos Santos MAT/CTE/UFSC (Blumenau) - <a href="http://lattes.cnpq.br/8148144650071227">cv-lattes</a></li>
+<li>Nestor Roqueiro DAS/CTC/UFSC (Florianópolis) - <a href="http://lattes.cnpq.br/173819867240445">cv-lattes</a></li>
+<li>Oscar Bruna Romero MIP/CCB/UFSC (Florianópolis) - <a href="http://lattes.cnpq.br/2472508053117517">cv-lattes</a></li>
+</ul>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -509,32 +361,6 @@ $(document).ready(function () {
 });
 </script>
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3,h4",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = false;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
