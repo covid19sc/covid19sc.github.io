@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Estimativas e predições do número de infectados</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">COVID19SC-Brasil</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="obitos_por_estado_covid19.html">Óbitos por estado</a>
+</li>
+<li>
+  <a href="infectados_por_estado_covid19.html">Infectados por estado</a>
+</li>
+<li>
+  <a href="equipe.html">Equipe</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Estimativas e predições do número de infectados</h1>
+
+</div>
+
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Dada a rapidez com que a epidemia/pandemia estava progredindo, as estimativas contam com heurísticas relativamente simples, em vez de análises abrangentes, que levam mais tempo para serem discutidas e testadas. A ênfase está na velocidade e nos dados continuamente atualizados, em vez de análises sofisticadas.</p>
+<p>As análises mais sofisticadas estão sendo feitas em paralelo, sendo elas:</p>
+<ul>
+<li>Aplicação e desenvolvimento de um modelo matemático epidemiologico levando em conta: a fração de indivíduos que se tornam graves, tempo de isolamento social, grau de mobilidade, probabilidade de contágio variada, entre outros aspectos;</li>
+<li>Desenvolvimento de um modelo matemático de simulação espacial do contágio, levando em consideração aspectos geograficos como tamanho de uma cidade, densidade populacional, entre outros aspectos..</li>
+</ul>
+</div>
+<div id="background-do-modelo-simples---crescimento-populacional-baseado-na-lei-de-malthus" class="section level1">
+<h1>Background do modelo simples - crescimento populacional baseado na Lei de Malthus:</h1>
+<p>O modelo exponencial de crescimento populacional proposto por Malthus pode ser aplicado ao <strong>contexto inicial</strong> do presente caso, o da dissiminação da doença.</p>
+<p>O modelo baseado na Lei de Malthus descreve o aumento populacional da seguinte forma:</p>
+<ul>
+<li>a taxa de mudança da população de sociedades humanas, espécies de animais, insetos ou colônias de bactérias é proporcional (<span class="math inline">\(\propto\)</span>) ao tamanho da população, sendo <span class="math inline">\(N(t)\)</span> a população no instante de tempo <span class="math inline">\(t\)</span>, onde podemos assumir que a população no instante de tempo inicial <span class="math inline">\(t=0\)</span> é alguma valor, chamado de <span class="math inline">\(N_0\)</span>. Assim o modelo que descreve essa taxa de mudança é dado pela equação diferencial:</li>
+</ul>
+<p><span class="math display">\[
+\frac{dN(t)}{dt} \propto N(t)
+\]</span></p>
+<p>A proporcionalidade (<span class="math inline">\(\propto\)</span>) pode ser transformada em uma igualdade (<span class="math inline">\(=\)</span>) com a multiplicação de uma constante qualquer, chamada aqui de <span class="math inline">\(r\)</span>, assim temos:</p>
+<p><span class="math display">\[
+\frac{dN(t)}{dt} = rN(t)
+\]</span> onde <span class="math inline">\(r\)</span> para esse caso é a taxa líquida da população, definida como a diferença entre as taxas de nascimento e óbito. O valor dessa constante <span class="math inline">\(r\)</span>, por exemplo, se for um valor de <span class="math inline">\(0.015/dia\)</span> pode representar uma taxa de crescimento de 15 pessoas, por dia, para cada grupo de 1000 pessoas.</p>
+<p>A equação (classificada como uma equação linear de primeira ordem com coeficientes constantes), dada uma condição inicial, de que no instante inicial, aqui denominado tempo zero <span class="math inline">\(t=0\)</span>, é especificada como uma quantidade, <span class="math inline">\(N(t=0) = N_0\)</span>, sendo, <span class="math inline">\(N_0\)</span> uma quantidade inicial de pessoas, possui a seguinte solução.</p>
+<p><span class="math display">\[
+N(t) = N_0e^{rt}
+\]</span> Assim, a suposição de que a população aumenta a uma taxa proporcional ao tamanho dessa população implica que a população aumenta exponencialmente com o tempo. Esse modelo de mudança populacional é conhecido como <strong>crescimento exponencial</strong> ou <strong>lei de Malthus</strong>. Esse modelo publicado pelo economista britâncio Thomas Malthus (1766-1834), <strong>embora seja extremamente simples ele é bem aplicado pelo menos para períodos limitados de tempo, geralmente períodos iniciais</strong>. Para longos períodos de tempo outros modelos de crescimento populacional como por exemplo o <strong>modelo de crescimento logístico</strong> pode ser aplicado.</p>
+<div class="figure" style="text-align: center">
+<img src="Escrita_estimativa_exponencial_files/figure-html/unnamed-chunk-1-1.png" alt="Exemplo de modelo exponencial de crescimento" width="672" />
+<p class="caption">
+Exemplo de modelo exponencial de crescimento
+</p>
+</div>
+<div id="métodos" class="section level2">
+<h2>Métodos</h2>
+<div id="números-bruto-de-casos-confirmados" class="section level3">
+<h3>Números bruto de casos confirmados</h3>
+<p>Nossos dados vêm do <a href="https://brasil.io/dataset/covid19/caso">Brasil.IO</a>, que é atualizado diariamente. Esses dados relatam o número acumulado de indivíduos confirmados com infecção de covid19 (<span class="math inline">\(I(t)\)</span>) e o número de óbitos (<span class="math inline">\(D(t)\)</span>) em cada cidade do país.</p>
+</div>
+<div id="casos-ativos---somente-os-que-foram-testados" class="section level3">
+<h3>Casos ativos - somente os que foram testados</h3>
+<p>Os casos ativos (<span class="math inline">\(A(t)\)</span>) devem ser simplesmente <span class="math inline">\(A(t) = I(t) - D(t) - R(t)\)</span> em que <span class="math inline">\(R(t)\)</span> são recuperações acumuladas no instante de tempo <span class="math inline">\(t\)</span>, dado em <span class="math inline">\([dias]\)</span>. Porém até o presente momento não temos acesso ao número de recuperados.</p>
+</div>
+<div id="casos-ativos-corrigidos---somente-os-que-foram-testados" class="section level3">
+<h3>Casos ativos corrigidos - somente os que foram testados</h3>
+<p>Uma vez que não temos o número de recuperados podemos que assumir que os casos ativos levam em média <strong>22 dias</strong> para serem resolvidos. Assim os casos ativos corrigidos serão os ativos menos os casos ativos de 22 dias atrás (corrigidos para os óbitos), <span class="math inline">\(A_c(t) = I(t) - D(t) - [I(t-22) - D(t-22)]\)</span>.</p>
+</div>
+<div id="modelo-de-crescimento-e-previsão-de-casos-ativos-do-coronavirus---covid19" class="section level3">
+<h3>Modelo de crescimento e previsão de casos ativos do coronavirus - covid19</h3>
+<p>Estamos interessados em saber como o número de casos ativos vai mudar no curto prazo, e para este caso utilizaremos o modelo exponencial. Assim, assumimos que casos ativos seguem um modelo de crescimento exponencial neste primeiro momento da pandemia no Brasil, tal que <span class="math inline">\(E[A(t)] = A_0e^{rt}\)</span>, que é o que se espera (valor esperado) em média do número de casos ativos, ou seja o modelo exponencial <span class="math inline">\(A(t) = A_0e^{rt}\)</span>, onde o valor dado pelo modelo será considerado um valor médio.</p>
+<p>Sabe-se que a dinâmica do crescimento do número de infectados é mais complexa do que isso, e para tanto vários <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">modelos epidemiológicos compartimentais</a> como SIR, SEIR entre outros podem ser utilizados, bem como modelos probabilísticos.</p>
+<p>Os dados disponibilizados até o presente momento estão relacionados com a fase inicial do espalhamento da doença e esse tópico trata somente de uma análise de curto prazo e para isso o modelo exponencial pode fornecer uma <strong>aproximação razoável</strong>.</p>
+<div class="figure" style="text-align: center">
+<img src="fig/fase_exponencial.png" alt="Exemplo de modelo epidemiológico compartimental" width="646" />
+<p class="caption">
+Exemplo de modelo epidemiológico compartimental
+</p>
+</div>
+<p>Para ajustar esse modelo exponencial, realizamos o processo de linearização do modelo, aplicando logaritmo natural de ambos os lados da equação, produzindo <span class="math inline">\(ln(A(t)) = rt + ln(A_0)\)</span>, dessa forma podemos ajustar por regressão linear simples as variáveis <span class="math inline">\(ln(A(t))\)</span> e <span class="math inline">\(t\)</span>. A inclinação desse ajuste é uma estimativa da taxa de crescimento intrínseca, <span class="math inline">\(r\)</span>.</p>
+<p>Realizamos vários tipos de ajustes desse modelo, por exemplo com base nos últimos (5,10,15,20) dias de dados de <span class="math inline">\(A(t)\)</span> e com isso realizamos a extrapolação, ou seja predição do modelo ajustado para entender, com base em dados atuais o que ocorrerá daqui a 10 dias ou mais no futuro de acordo com o modelo exponencial.</p>
+<p>O ajuste e a extrapolação/predição foram efetuados com o modelo transformado (linearizado) em termos <span class="math inline">\(log\)</span> natural (com intervalos de confiança de 95%) e esse <span class="math inline">\(log\)</span> dos números de casos ativos esperados é transformado novamente na escala original para produzir os dados que são apresentados.</p>
+<p>As intervenções de saúde pública estão mudando rapidamente a taxa de crescimento, isso pode ser visto como <strong>desvios</strong> da linha reta esperada no gráfico em escala <span class="math inline">\(log\)</span>.</p>
+<p>Nessas situações, quando a taxa de crescimento estiver caindo rapidamente (é onde supostamente a “<em>curva está se achatando</em>”), neste caso as previsões desse modelo exponencial serão enviesadas para cima.</p>
+</div>
+<div id="tempo-de-duplicação" class="section level3">
+<h3>Tempo de duplicação</h3>
+<p>O tempo de duplicação (<span class="math inline">\(t_d\)</span>) é uma medida intuitiva da rapidez com que uma população está crescendo. Ele relata o número de dias para a população dobrar de tamanho e é calculada da seguinte forma, considerando o tamanho da população atual dividido tamanho da população no instante inicial sendo igual a 2, ou seja</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{A(t)}{A_0} &amp;= 2\\
+\\
+\frac{A_0e^{r\color{red}{t_d}}}{A_0} &amp;= 2\\
+\color{red}{t_d} &amp;= \frac{ln(2)}{r}\\
+\end{aligned}
+\]</span> Dessa forma o tempo de duplicação pode ser calculado diretamente a partir das estimativas de <span class="math inline">\(r\)</span>.</p>
+</div>
+<div id="estudo-sobre-as-subnotificações" class="section level3">
+<h3>Estudo sobre as subnotificações</h3>
+<!-- https://www.medrxiv.org/content/10.1101/2020.04.02.20051318v1.full.pdf -->
+<p>Uma das principais fontes de incerteza nessa pandemia tem sido os casos não detectados (<strong>subnotificados</strong>). O vírus Covid-19 é um patógeno de fácil espalhamento resultando, na maioria das vezes em um grande número de infecções em um local antes que seja notados os sintomas (ainda, existe um grande número de casos assintomáticos). Dessa maneira podemos tentar estimar o tamanho desse problema, dessa maneira os óbitos serão uma função do número real de casos, não do número de casos confirmados e relatados.</p>
+<p>Nem todos os casos são detectados e, portanto, o número relatado de casos ativos é quase sempre menor que o número real de casos. Neste sentido existem duas categorias de casos que não são detectados:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Não diagnosticados</strong> - indivíduos infectados, mas que ainda não apresentam sintomas</li>
+<li><strong>Não detectados</strong> - indivíduos que apresentam sintomas leves ou que não foram monitorados e confirmados.</li>
+</ol>
+<div id="não-diagnosticados" class="section level4">
+<h4><strong>Não diagnosticados</strong></h4>
+<p>É um problema causada por um atraso entre infecção e diagnóstico.</p>
+<p>No entanto, se soubermos algo sobre a duração desse atraso, poderemos usar essas informações para aumentar os números de casos observados e produzir estimativas do número de casos não diagnosticados.</p>
+<p>O determinante mais importante do atraso é o período de incubação da infecção. Sabe-se que isso é altamente variável, mas pode ser modelado usando uma distribuição de probabilidade, chamada de distribuição do tempo de incubação.</p>
+<p>Informações sobre a distribuição do tempo de incubação existem de fontes externas.</p>
+<p>Sabe-se que o período médio de incubação é de 5 a 6 dias e que 95% das infecções têm um período de incubação não superior a 12 a 13 dias.</p>
+<p>Em nosso modelo, uma distribuição log-normal incorporando esses recursos é usada para modelar a distribuição de incubação.</p>
+<p>Dado esse modelo para a distribuição do tempo de incubação, as contagens diárias de diagnóstico refletem um número maior e desconhecido de infecções por Covid-19 na população, agregadas à distribuição da incubação. Usando as contagens de diagnóstico observadas, podemos, portanto, estimar o número desconhecido de infecções por Covid-19 desagregando os números de infecção da distribuição de incubação.</p>
+<p>Esse processo é conhecido como deconvolução estatística, também chamada de back-calculation.</p>
+<p>Do ponto de vista técnico, o método é uma análise de regressão linear de Poisson, com restrição não-negativa, onde a variável <span class="math inline">\(y\)</span> é a contagem de diagnósticos observada e o modelo linear é a convolução linear dos números médios de infecção e a distribuição do tempo de incubação.</p>
+<p>Esta é uma análise não padronizada, mas existem algoritmos confiáveis de ajuste de modelo e são incorporados aqui. Nós utilizaremos está técnica para estimar casos não diagnosticados.</p>
+</div>
+<div id="não-detectados" class="section level4">
+<h4><strong>Não detectados</strong></h4>
+<p>São casos que foram completamente ignorados pela testagem. Para estimar isso, utilizaremos uma heurística que assume: que os óbitos não passam despercebidos, que há transmissão da comunidade (em uma população fechada), que existe uma taxa de fatalidade de casos sintomáticos (iremos assumir diferentes cenários, porém o estimado atualmente é de 5.4%, 10/04/2019, números mais baixos farão com que nossa estimativa de detecção seja mais baixa).</p>
+<p>Novos casos observados nos próximos dias <span class="math inline">\(t\)</span> são calculados como <span class="math inline">\(N(t) = A(t)-A(t-t_e)\)</span> e, de acordo com as premissas anteriores, o número esperado de novos casos <span class="math inline">\(\hat {N}(t) = (D(t + 17) - D(t + 12) / 0,033\)</span>. A escolha de <span class="math inline">\(t_e\)</span> para fazer essa estimativa irá refletir nosso interesse em estimar a detecção mais cedo, quando ainda há poucos casos. Uma janela de cinco dias geralmente é capturada em pelo menos uma morte.) Em seguida, estimamos a probabilidade de detecção, <span class="math inline">\(p\)</span>, como a média acima de <span class="math inline">\(t\)</span> de $N(t)/ (t) $. Uma vez detectada, podemos definir o número total de casos sintomáticos ativos como <span class="math inline">\(T(t) =A(t)/p\)</span>.</p>
+<p>O grande número de suposições por trás desse último método para estimar a detecção significa que devemos ser muito cautelosos com ele, mas basta mostrar que a probabilidade de detecção em alguns países é muito alta (isto é, relativamente poucos casos não detectados), enquanto em outros é muito baixa. de fato (muitos casos não detectados). Nos países com muitos casos não detectados, há muito mais mortes do que os números de casos relatados. Uma fonte óbvia de viés em ambas as estimativas são os casos importados. Quando houver movimento entre países e grandes diferenças no número de casos, os países com um pequeno número de casos terão uma grande proporção de casos importados. Isso nos fará estimar um número maior de não-detecções do que existem.</p>
+<p>Não detectados será a nossa estimativa menos confiável.</p>
+</div>
+</div>
+</div>
+<div id="taxa-de-crescimento" class="section level2">
+<h2>Taxa de crescimento</h2>
+<p>As intervenções de saúde pública visam reduzir a transmissão de vírus e, assim, reduzir o crescimento do número de casos ativos. As primeiras indicações de sucesso da intervenção se manifestarão em taxas de crescimento mais baixas (provavelmente irá refletir após dez dias da intervenção, no caso da covid-19).</p>
+<p>A taxa de crescimento per capita pode ser calculada todos os dias como</p>
+<p><span class="math display">\[
+G(t) = \frac{A(t)-A(t-1)} {A(t-1)}
+\]</span></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
