@@ -11,7 +11,7 @@
 
 
 
-<title>Infectados confirmados por estado Covid19</title>
+<title>Estimativas e predições do número de confirmados infectados</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -408,31 +408,102 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Infectados confirmados por estado Covid19</h1>
+<h1 class="title toc-ignore">Estimativas e predições do número de confirmados infectados</h1>
 
 </div>
 
 
+<button type="button" class="btn btn-primary disabled">
+Primeira vez online: 25/04/2020
+</button>
 <button type="button" class="btn btn-success disabled">
 Atualizado em: 26-04-2020
 </button>
+<button type="button" class="btn btn-warning disabled">
+Em construção
+</button>
 <p><br></br></p>
-<p>Previsão de crescimento exponencial dos infectados em cada um dos estados da federação, com margem de predição.</p>
-<p>O método utilizado para o cálculo das curvas de predição estão decritos na seção <a href="https://covid19sc.github.io/metodo_estimativa_exponencial.html">Métodos</a></p>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
 <p><br></br></p>
-<div id="resultados-de-confirmados-por-estado" class="section level2 tabset">
-<h2>Resultados de confirmados por estado</h2>
-<div id="confirmados-absolutos" class="section level3">
-<h3>Confirmados (absolutos)</h3>
-<p><img src="fig/fitexp_ABS_AC.png" width="100%" /><img src="fig/fitexp_ABS_AL.png" width="100%" /><img src="fig/fitexp_ABS_AM.png" width="100%" /><img src="fig/fitexp_ABS_AP.png" width="100%" /><img src="fig/fitexp_ABS_BA.png" width="100%" /><img src="fig/fitexp_ABS_CE.png" width="100%" /><img src="fig/fitexp_ABS_DF.png" width="100%" /><img src="fig/fitexp_ABS_ES.png" width="100%" /><img src="fig/fitexp_ABS_GO.png" width="100%" /><img src="fig/fitexp_ABS_MA.png" width="100%" /><img src="fig/fitexp_ABS_MG.png" width="100%" /><img src="fig/fitexp_ABS_MS.png" width="100%" /><img src="fig/fitexp_ABS_MT.png" width="100%" /><img src="fig/fitexp_ABS_PA.png" width="100%" /><img src="fig/fitexp_ABS_PB.png" width="100%" /><img src="fig/fitexp_ABS_PE.png" width="100%" /><img src="fig/fitexp_ABS_PI.png" width="100%" /><img src="fig/fitexp_ABS_PR.png" width="100%" /><img src="fig/fitexp_ABS_RJ.png" width="100%" /><img src="fig/fitexp_ABS_RN.png" width="100%" /><img src="fig/fitexp_ABS_RO.png" width="100%" /><img src="fig/fitexp_ABS_RR.png" width="100%" /><img src="fig/fitexp_ABS_RS.png" width="100%" /><img src="fig/fitexp_ABS_SC.png" width="100%" /><img src="fig/fitexp_ABS_SE.png" width="100%" /><img src="fig/fitexp_ABS_SP.png" width="100%" /><img src="fig/fitexp_ABS_TO.png" width="100%" /></p>
+<p>Dada a rapidez com que a epidemia/pandemia estava progredindo, as estimativas contam com heurísticas relativamente simples, em vez de análises abrangentes, que levam mais tempo para serem discutidas e testadas. A ênfase está na velocidade e nos dados continuamente atualizados, em vez de análises sofisticadas.</p>
+<p>As análises mais sofisticadas estão sendo feitas em paralelo, sendo elas:</p>
+<ul>
+<li>Aplicação e desenvolvimento de um modelo matemático epidemiologico levando em conta: a fração de indivíduos que se tornam graves, tempo de isolamento social, grau de mobilidade, probabilidade de contágio variada, entre outros aspectos;</li>
+<li>Desenvolvimento de um modelo matemático de simulação espacial do contágio, levando em consideração aspectos geograficos como tamanho de uma cidade, densidade populacional, entre outros aspectos..</li>
+</ul>
+<p><br></br></p>
 </div>
-<div id="confirmados-por-100-000-habitantes" class="section level3">
-<h3>Confirmados por 100 000 habitantes</h3>
-<p><img src="fig/fitexp_100M_AC.png" width="100%" /><img src="fig/fitexp_100M_AL.png" width="100%" /><img src="fig/fitexp_100M_AM.png" width="100%" /><img src="fig/fitexp_100M_AP.png" width="100%" /><img src="fig/fitexp_100M_BA.png" width="100%" /><img src="fig/fitexp_100M_CE.png" width="100%" /><img src="fig/fitexp_100M_DF.png" width="100%" /><img src="fig/fitexp_100M_ES.png" width="100%" /><img src="fig/fitexp_100M_GO.png" width="100%" /><img src="fig/fitexp_100M_MA.png" width="100%" /><img src="fig/fitexp_100M_MG.png" width="100%" /><img src="fig/fitexp_100M_MS.png" width="100%" /><img src="fig/fitexp_100M_MT.png" width="100%" /><img src="fig/fitexp_100M_PA.png" width="100%" /><img src="fig/fitexp_100M_PB.png" width="100%" /><img src="fig/fitexp_100M_PE.png" width="100%" /><img src="fig/fitexp_100M_PI.png" width="100%" /><img src="fig/fitexp_100M_PR.png" width="100%" /><img src="fig/fitexp_100M_RJ.png" width="100%" /><img src="fig/fitexp_100M_RN.png" width="100%" /><img src="fig/fitexp_100M_RO.png" width="100%" /><img src="fig/fitexp_100M_RR.png" width="100%" /><img src="fig/fitexp_100M_RS.png" width="100%" /><img src="fig/fitexp_100M_SC.png" width="100%" /><img src="fig/fitexp_100M_SE.png" width="100%" /><img src="fig/fitexp_100M_SP.png" width="100%" /><img src="fig/fitexp_100M_TO.png" width="100%" /></p>
+<div id="background-do-modelo-simples---crescimento-populacional-baseado-na-lei-de-malthus" class="section level1">
+<h1>Background do modelo simples - crescimento populacional baseado na Lei de Malthus:</h1>
+<p><br></br></p>
+<p>O modelo exponencial de crescimento populacional proposto por Malthus pode ser aplicado ao <strong>contexto inicial</strong> do presente caso, o da dissiminação da doença.</p>
+<p>O modelo baseado na Lei de Malthus descreve o aumento populacional da seguinte forma:</p>
+<ul>
+<li>a taxa de mudança da população de sociedades humanas, espécies de animais, insetos ou colônias de bactérias é proporcional (<span class="math inline">\(\propto\)</span>) ao tamanho da população, sendo <span class="math inline">\(N(t)\)</span> a população no instante de tempo <span class="math inline">\(t\)</span>, onde podemos assumir que a população no instante de tempo inicial <span class="math inline">\(t=0\)</span> é alguma valor, chamado de <span class="math inline">\(N_0\)</span>. Assim o modelo que descreve essa taxa de mudança é dado pela equação diferencial:</li>
+</ul>
+<p><span class="math display">\[
+\frac{dN(t)}{dt} \propto N(t)
+\]</span></p>
+<p>A proporcionalidade (<span class="math inline">\(\propto\)</span>) pode ser transformada em uma igualdade (<span class="math inline">\(=\)</span>) com a multiplicação de uma constante qualquer, chamada aqui de <span class="math inline">\(r\)</span>, assim temos:</p>
+<p><span class="math display">\[
+\frac{dN(t)}{dt} = rN(t)
+\]</span> onde <span class="math inline">\(r\)</span> para esse caso é a taxa líquida da população, definida como a diferença entre as taxas de nascimento e óbito. O valor dessa constante <span class="math inline">\(r\)</span>, por exemplo, se for um valor de <span class="math inline">\(0.015/dia\)</span> pode representar uma taxa de crescimento de 15 pessoas, por dia, para cada grupo de 1000 pessoas.</p>
+<p>A equação (classificada como uma equação linear de primeira ordem com coeficientes constantes), dada uma condição inicial, de que no instante inicial, aqui denominado tempo zero <span class="math inline">\(t=0\)</span>, é especificada como uma quantidade, <span class="math inline">\(N(t=0) = N_0\)</span>, sendo, <span class="math inline">\(N_0\)</span> uma quantidade inicial de pessoas, possui a seguinte solução.</p>
+<p><span class="math display">\[
+N(t) = N_0e^{rt}
+\]</span></p>
+<p>Assim, a suposição de que a população aumenta a uma taxa proporcional ao tamanho dessa população implica que a população aumenta exponencialmente com o tempo. Esse modelo de mudança populacional é conhecido como <strong>crescimento exponencial</strong> ou <strong>lei de Malthus</strong>. Esse modelo publicado pelo economista britâncio Thomas Malthus (1766-1834), <strong>embora seja extremamente simples ele é bem aplicado pelo menos para períodos limitados de tempo, geralmente períodos iniciais</strong>. Para longos períodos de tempo outros modelos de crescimento populacional como por exemplo o <strong>modelo de crescimento logístico</strong> pode ser aplicado.</p>
+<div class="figure" style="text-align: center">
+<img src="metodo_estimativa_exponencial_files/figure-html/unnamed-chunk-1-1.png" alt="Exemplo de modelo exponencial de crescimento" width="672" />
+<p class="caption">
+Exemplo de modelo exponencial de crescimento
+</p>
 </div>
-<div id="como-ler-este-gráfico" class="section level3">
-<h3>Como ler este gráfico</h3>
-<p><img src="fig/explicacao_figura.png" width="100%" /></p>
+</div>
+<div id="métodos" class="section level1">
+<h1>Métodos</h1>
+<div id="números-bruto-de-casos-confirmados" class="section level2">
+<h2>Números bruto de casos confirmados</h2>
+<p>Nossos dados vêm do <a href="https://brasil.io/dataset/covid19/caso">Brasil.IO</a>, que é atualizado diariamente. Esses dados relatam o número acumulado de indivíduos confirmados com infecção de covid-19 (<span class="math inline">\(I(t)\)</span>) e o número de óbitos (<span class="math inline">\(D(t)\)</span>) em cada cidade do país.</p>
+<div id="modelo-de-crescimento-e-previsão-de-casos-confirmados-de-covid-19" class="section level3">
+<h3>Modelo de crescimento e previsão de casos confirmados de covid-19</h3>
+<p>Estamos interessados em saber como o número de casos confirmados vai mudar no curto prazo, e para isso utilizaremos o modelo exponencial. Assim, assumimos que casos confirmados seguem um modelo de crescimento exponencial em fases inciais da pandemia, tal que <span class="math inline">\(E[I(t)] = I_0e^{rt}\)</span>, que é o que se espera (valor esperado) em média do número de casos confirmados, ou seja o modelo exponencial <span class="math inline">\(I(t) = I_0e^{rt}\)</span>, onde o valor dado pelo modelo será considerado um valor médio.</p>
+<p>Sabe-se que a dinâmica do crescimento do número de infectados é mais complexa do que isso, e para tanto vários <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">modelos epidemiológicos compartimentais</a> como SIR, SEIR entre outros podem ser utilizados, bem como modelos <a href="https://www.imperial.ac.uk/mrc-global-infectious-disease-analysis/covid-19/report-13-europe-npi-impact/">probabilísticos</a>.</p>
+<p>Os dados disponibilizados até o presente momento estão relacionados com a fase inicial da dissiminação da doença e esse tópico trata somente de uma análise de curto prazo e para isso o modelo exponencial pode fornecer uma <strong>aproximação razoável</strong>.</p>
+<div class="figure" style="text-align: center">
+<img src="fig/fase_exponencial.png" alt="Exemplo de modelo epidemiológico compartimental" width="646" />
+<p class="caption">
+Exemplo de modelo epidemiológico compartimental
+</p>
+</div>
+<p>Para ajustar esse modelo exponencial aos dados obtidos, realizamos o processo de linearização do modelo, aplicando logaritmo natural de ambos os lados da equação, produzindo <span class="math inline">\(ln(I(t)) = rt + ln(I_0)\)</span>, dessa forma podemos ajustar por regressão linear simples as variáveis <span class="math inline">\(ln(I(t))\)</span> e <span class="math inline">\(t\)</span>. A inclinação desse ajuste é uma estimativa da taxa de crescimento intrínseca, <span class="math inline">\(r\)</span>.</p>
+<p>Várias estratégias de ajuste desse modelo aos dados pode ser efetuada, por exemplo com base nos últimos (5,10,15,20,…) dias de dados de <span class="math inline">\(I(t)\)</span>, com isso realizamos a extrapolação, ou seja predição do modelo ajustado para entender com base em dados observados o que ocorrerá daqui a 7 dias ou mais no futuro, de acordo com o modelo exponencial ajustado.</p>
+<p>O ajuste e a extrapolação/predição foram efetuados com o modelo transformado (linearizado) em termos <span class="math inline">\(log\)</span> natural (com intervalos de predição de 95%) e esse <span class="math inline">\(log\)</span> dos números de casos confirmados esperados é transformado novamente na escala original para produzir os dados que são apresentados nos gráficos.</p>
+<p>As intervenções de saúde pública estão mudando rapidamente a taxa de crescimento, isso pode ser visto como <strong>desvios</strong> da linha reta esperada no gráfico quando apresentado em escala <span class="math inline">\(log\)</span>.</p>
+<p>Nessas situações, quando a taxa de crescimento estiver caindo rapidamente (é onde supostamente a “<em>curva está se achatando</em>”), neste caso as previsões desse modelo exponencial serão enviesadas para cima.</p>
+<p>Os gráficos serão apresentados em escala linear e escala <span class="math inline">\(log\)</span>.</p>
+</div>
+<div id="tempo-de-duplicação" class="section level3">
+<h3>Tempo de duplicação</h3>
+<p>O tempo de duplicação (<span class="math inline">\(t_d\)</span>) é uma medida intuitiva da rapidez com que a doença está crescendo. Ele relata o número de dias para os confirmados dobrar de tamanho e é calculada da seguinte forma, considerando o quantidade confirmados atual dividido quantidade de confirmados no instante inicial sendo igual a 2, ou seja</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{I(t)}{I_0} &amp;= 2\\
+\\
+\frac{I_0e^{r\color{red}{t_d}}}{I_0} &amp;= 2\\
+\color{red}{t_d} &amp;= \frac{ln(2)}{r}\\
+\end{aligned}
+\]</span> Dessa forma o tempo de duplicação pode ser calculado diretamente a partir das estimativas de <span class="math inline">\(r\)</span>.</p>
+</div>
+</div>
+<div id="taxa-de-crescimento" class="section level2">
+<h2>Taxa de crescimento</h2>
+<p>As intervenções de saúde pública visam reduzir a transmissão de vírus e, assim, reduzir o crescimento do número de casos ativos. As primeiras indicações de sucesso da intervenção se manifestarão em taxas de crescimento mais baixas (provavelmente irá refletir após dez dias da intervenção, no caso da covid-19).</p>
+<p>A taxa de crescimento per capita pode ser calculada todos os dias como</p>
+<p><span class="math display">\[
+G(t) = \frac{I(t)-I(t-1)}{I(t-1)}
+\]</span></p>
 </div>
 </div>
 
