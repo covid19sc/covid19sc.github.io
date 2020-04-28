@@ -414,21 +414,27 @@ $(document).ready(function () {
 
 
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 26-04-2020
+Atualizado em: 28-04-2020
 </button>
 <p><br></br></p>
 <p>Previsão de crescimento exponencial dos infectados em cada um dos estados da federação, com margem de predição.</p>
 <p>O método utilizado para o cálculo das curvas de predição estão decritos na seção <a href="https://covid19sc.github.io/metodo_estimativa_exponencial.html">Métodos</a></p>
-<p><br></br></p>
 <div id="resultados-de-confirmados-por-estado" class="section level2 tabset">
 <h2>Resultados de confirmados por estado</h2>
-<div id="confirmados-absolutos" class="section level3">
-<h3>Confirmados (absolutos)</h3>
-<p><img src="fig/fitexp_ABS_AC.png" width="100%" /><img src="fig/fitexp_ABS_AL.png" width="100%" /><img src="fig/fitexp_ABS_AM.png" width="100%" /><img src="fig/fitexp_ABS_AP.png" width="100%" /><img src="fig/fitexp_ABS_BA.png" width="100%" /><img src="fig/fitexp_ABS_CE.png" width="100%" /><img src="fig/fitexp_ABS_DF.png" width="100%" /><img src="fig/fitexp_ABS_ES.png" width="100%" /><img src="fig/fitexp_ABS_GO.png" width="100%" /><img src="fig/fitexp_ABS_MA.png" width="100%" /><img src="fig/fitexp_ABS_MG.png" width="100%" /><img src="fig/fitexp_ABS_MS.png" width="100%" /><img src="fig/fitexp_ABS_MT.png" width="100%" /><img src="fig/fitexp_ABS_PA.png" width="100%" /><img src="fig/fitexp_ABS_PB.png" width="100%" /><img src="fig/fitexp_ABS_PE.png" width="100%" /><img src="fig/fitexp_ABS_PI.png" width="100%" /><img src="fig/fitexp_ABS_PR.png" width="100%" /><img src="fig/fitexp_ABS_RJ.png" width="100%" /><img src="fig/fitexp_ABS_RN.png" width="100%" /><img src="fig/fitexp_ABS_RO.png" width="100%" /><img src="fig/fitexp_ABS_RR.png" width="100%" /><img src="fig/fitexp_ABS_RS.png" width="100%" /><img src="fig/fitexp_ABS_SC.png" width="100%" /><img src="fig/fitexp_ABS_SE.png" width="100%" /><img src="fig/fitexp_ABS_SP.png" width="100%" /><img src="fig/fitexp_ABS_TO.png" width="100%" /></p>
-</div>
 <div id="confirmados-por-100-000-habitantes" class="section level3">
 <h3>Confirmados por 100 000 habitantes</h3>
+<p><strong>Escala fixada em todos os gráficos</strong>: 200 por 100 000 habitantes</p>
 <p><img src="fig/fitexp_100M_AC.png" width="100%" /><img src="fig/fitexp_100M_AL.png" width="100%" /><img src="fig/fitexp_100M_AM.png" width="100%" /><img src="fig/fitexp_100M_AP.png" width="100%" /><img src="fig/fitexp_100M_BA.png" width="100%" /><img src="fig/fitexp_100M_CE.png" width="100%" /><img src="fig/fitexp_100M_DF.png" width="100%" /><img src="fig/fitexp_100M_ES.png" width="100%" /><img src="fig/fitexp_100M_GO.png" width="100%" /><img src="fig/fitexp_100M_MA.png" width="100%" /><img src="fig/fitexp_100M_MG.png" width="100%" /><img src="fig/fitexp_100M_MS.png" width="100%" /><img src="fig/fitexp_100M_MT.png" width="100%" /><img src="fig/fitexp_100M_PA.png" width="100%" /><img src="fig/fitexp_100M_PB.png" width="100%" /><img src="fig/fitexp_100M_PE.png" width="100%" /><img src="fig/fitexp_100M_PI.png" width="100%" /><img src="fig/fitexp_100M_PR.png" width="100%" /><img src="fig/fitexp_100M_RJ.png" width="100%" /><img src="fig/fitexp_100M_RN.png" width="100%" /><img src="fig/fitexp_100M_RO.png" width="100%" /><img src="fig/fitexp_100M_RR.png" width="100%" /><img src="fig/fitexp_100M_RS.png" width="100%" /><img src="fig/fitexp_100M_SC.png" width="100%" /><img src="fig/fitexp_100M_SE.png" width="100%" /><img src="fig/fitexp_100M_SP.png" width="100%" /><img src="fig/fitexp_100M_TO.png" width="100%" /></p>
+</div>
+<div id="confirmados-absolutos" class="section level3">
+<h3>Confirmados (absolutos)</h3>
+<p><strong>Escala fixada nos gráficos segue a seguinte regra</strong>:</p>
+<ul>
+<li>Total &lt; 5 000, escala será no máximo 5000</li>
+<li>5000 &lt;= Total &lt; 10 000, escala será no máximo 10 000</li>
+<li>Total &gt;= 10 000, escala será no máximo 35 000</li>
+</ul>
+<p><img src="fig/fitexp_ABS_AC.png" width="100%" /><img src="fig/fitexp_ABS_AL.png" width="100%" /><img src="fig/fitexp_ABS_AM.png" width="100%" /><img src="fig/fitexp_ABS_AP.png" width="100%" /><img src="fig/fitexp_ABS_BA.png" width="100%" /><img src="fig/fitexp_ABS_CE.png" width="100%" /><img src="fig/fitexp_ABS_DF.png" width="100%" /><img src="fig/fitexp_ABS_ES.png" width="100%" /><img src="fig/fitexp_ABS_GO.png" width="100%" /><img src="fig/fitexp_ABS_MA.png" width="100%" /><img src="fig/fitexp_ABS_MG.png" width="100%" /><img src="fig/fitexp_ABS_MS.png" width="100%" /><img src="fig/fitexp_ABS_MT.png" width="100%" /><img src="fig/fitexp_ABS_PA.png" width="100%" /><img src="fig/fitexp_ABS_PB.png" width="100%" /><img src="fig/fitexp_ABS_PE.png" width="100%" /><img src="fig/fitexp_ABS_PI.png" width="100%" /><img src="fig/fitexp_ABS_PR.png" width="100%" /><img src="fig/fitexp_ABS_RJ.png" width="100%" /><img src="fig/fitexp_ABS_RN.png" width="100%" /><img src="fig/fitexp_ABS_RO.png" width="100%" /><img src="fig/fitexp_ABS_RR.png" width="100%" /><img src="fig/fitexp_ABS_RS.png" width="100%" /><img src="fig/fitexp_ABS_SC.png" width="100%" /><img src="fig/fitexp_ABS_SE.png" width="100%" /><img src="fig/fitexp_ABS_SP.png" width="100%" /><img src="fig/fitexp_ABS_TO.png" width="100%" /></p>
 </div>
 <div id="como-ler-este-gráfico" class="section level3">
 <h3>Como ler este gráfico</h3>
