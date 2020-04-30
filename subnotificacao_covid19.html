@@ -11,7 +11,7 @@
 
 
 
-<title>Subnotificação nos estados - Covid-19</title>
+<title>Subnotificação</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -285,10 +285,7 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li class="dropdown">
+        <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Brasil
      
@@ -361,6 +358,9 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li>
+  <a href="subnotificacao_covid19.html">Subnotificação</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Métodos
@@ -408,7 +408,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Subnotificação nos estados - Covid-19</h1>
+<h1 class="title toc-ignore">Subnotificação</h1>
 
 </div>
 
@@ -416,67 +416,11 @@ $(document).ready(function () {
 <button type="button" class="btn btn-success disabled">
 Atualizado em: 30-04-2020
 </button>
-<p>A metodologia de análise de subnotificação foi baseada no relatório do <a href="https://cmmid.github.io/topics/covid19/global_cfr_estimates.html">CMMID nCov working group</a>.</p>
-<p>Em resumo o método do CMMID é descrito da seguinte forma:</p>
-<ul>
-<li><p>In real-time, dividing deaths-to-date by cases-to-date leads to a biased estimate of the case fatality ratio (CFR), because this calculation does not account for delays from confirmation of a case to death, and under-reporting of cases.</p></li>
-<li><p>Using the distribution of the delay from hospitalisation-to-death for cases that are fatal, we can estimate how many cases so far are expected to have known outcomes (i.e. death or recovery), and hence adjust the naive estimates of CFR to account for these delays.</p></li>
-<li><p>The adjusted CFR does not account for under-reporting. However, the best available estimates of CFR (adjusting or controlling for under-reporting) are in the 1% - 1.5% range [1–4]. Large studies in China and South Korea estimating the CFR at 1.38% (95% CrI: 1.23–1.53%)[2] and 1.4% (95% CrI: 1.2-1.7%)[4] respectively. Based on these studies, and for simplicity, we assume a baseline CFR of 1.4% for our analysis.</p></li>
-<li><p>If a country has an adjusted CFR that is higher (e.g. 20%), it suggests that only a fraction of cases have been reported (in this case, 1.420=7.0% cases reported approximately).</p></li>
-</ul>
-<div id="tradução" class="section level1">
-<h1>tradução</h1>
-<ul>
-<li><p>Em tempo real, dividindo as <em>óbitos até o momento</em> pelos <em>casos até o momento</em> nos leva a uma estimativa tendenciosa da taxa de mortalidade de casos (CFR - <em>case fatality ratio</em>), pois esse cálculo não leva em conta os atrasos na confirmação de um caso até o óbito e de casos <strong>subnotificados</strong>.</p></li>
-<li><p>Usando a distribuição para atraso da <em>hospitalização até o óbito</em> para casos fatais, podemos estimar quantos casos até o momento devem ter resultados conhecidos (por exemplo, morte ou recuperação) e, portanto, ajustar as estimativas ingênuas da CFR para levar em consideração por esses atrasos.</p></li>
-<li><p>O CFR ajustado não leva em consideração os casos <strong>subnotificados</strong>. No entanto, as melhores estimativas disponíveis de CFR (ajuste ou controle para <strong>subnotificação</strong>) estão na faixa de 1% a 1,5% <a href="https://cmmid.github.io/topics/covid19/global_cfr_estimates.html">ref</a>. Outros estudos na China e Coréia do Sul estimaram o CFR em 1,38% (95% CrI: 1,23-1,53%) e 1,4% (95% CrI: 1,2-1,7%), respectivamente. Com base nesses estudos e por simplicidade, assumimos uma CFR basal de 1,4% para nossa análise.</p></li>
-<li><p>Se um país tiver uma CFR ajustada mais alta (por exemplo, 20%), isso sugere que apenas uma fração dos casos foi relatada (nesse caso, 1.420 = 7,0% dos casos relatados aproximadamente).</p></li>
-</ul>
-<div id="ajustando-para-atraso-de-resultado-nas-estimativas-de-cfr" class="section level2">
-<h2>Ajustando para atraso de resultado nas estimativas de CFR</h2>
-<p>Durante um surto, a CFR ingênua (nCFR), ou seja, a proporção de mortes relatadas entre casos relatados até a data atual, subestimará a verdadeira CFR porque o resultado (recuperação ou morte) não é conhecido em todos os casos. Porém, podemos estimar o verdadeiro denominador da CFR (isto é, o número de casos com resultados conhecidos), contabilizando o atraso da confirmação até a morte.</p>
-<p>Assumimos que o atraso da confirmação até a morte seguiu a mesma distribuição estimada de <em>hospitalização até o óbito</em>, com base nos dados do surto de COVID-19 em Wuhan, China, entre 17 de dezembro de 2019 e 22 de janeiro de 2020, contabilizando e corrigindo os dados como resultado de resultados de doenças ainda desconhecidas (Figura 1, painéis A e B da referencia [7]). A distribuição de densidade de probabilidade utilizada usada que melhor se ajustou foi a Lognormal, tem um atraso médio de 13 dias e um desvio padrão de 12,7 dias.</p>
-<p>Para corrigir a CFR, usamos os dados de incidência de casos e óbitos para estimar a proporção de casos com resultados conhecidos [1,6]:</p>
-<p><span class="math display">\[
-u_{t} = \frac{ \sum_{j = 0}^{t} c_{t-j} f_j}{c_t},
-\]</span></p>
-<p>onde <span class="math inline">\(u_t\)</span> representa a subestimação da proporção de casos com resultados conhecidos [1,5,6] e é usado para escalar o valor do número acumulado de casos no denominador no cálculo do cCFR, <span class="math inline">\(c_t\)</span> é a incidência diária de casos no tempo <span class="math inline">\(t\)</span> e <span class="math inline">\(f_t\)</span> é a proporção de casos com atraso de <span class="math inline">\(t\)</span> entre a confirmação e o óbito.</p>
-</div>
-</div>
-<div id="aproximando-a-proporção-de-casos-sintomáticos-notificados" class="section level1">
-<h1>Aproximando a proporção de casos sintomáticos notificados</h1>
-<p>Nesta fase, foram calculadas estimativas brutas do CFR do COVID-19 corrigindo o atraso no resultado, mas não a <strong>subnotificação</strong>. Essas estimativas variam entre 1% e 1,5% [1–3]. Assumimos um CFR de 1,4% (95% CrI: 1,2-1,7%), extraído de um grande estudo recente [3], como um CFR básico. Usamos para aproximar o nível potencial de subnotificação em cada país. Especificamente, realizamos o cálculo de 1,4% de cCFR (<span class="math inline">\(\frac{1.4\%}{\text{cCFR}}\)</span>) de cada país para estimar uma fração aproximada dos casos relatados.</p>
-</div>
-<div id="variaçao-temporal" class="section level1">
-<h1>variaçao temporal</h1>
-<p>Estimamos o nível de subnotificação todos os dias para cada país que teve mais de dez mortes. Em seguida, ajustamos um Modelo Aditivo Generalizado (GAM) do formulário</p>
-<p><span class="math display">\[
-\mathbb{E}[\log(D)] = \beta_0 + \beta_1 x_1 + ... + \beta_p x_p,
-\]</span></p>
-<p>especificando uma distribuição de Poisson nas mortes (D) como variável de resposta. O modelo possui uma função de log-link e um log-offset (κ) consistindo nos resultados diários conhecidos ut e na estimativa de cCFR para esse país no dia cfrt. O modelo pode ser escrito como</p>
-<p><span class="math display">\[
-D \sim s(t) + \underbrace{\log(u_t c_t) + \log(\text{cfr}_t)}_{:=log(κ)}
-\]</span></p>
-<p>onde s (t) é um spline de suavização, ajustado pelos pontos de tempo (dias) para os quais temos dados.</p>
-</div>
-<div id="limitaçoes" class="section level1">
-<h1>Limitaçoes</h1>
-<p>Implícito na suposição de que o sub-relatório é de 1,4% de cCFR (<span class="math inline">\(\frac{1.4\%}{\text{cCFR}}\)</span>) para um determinado país(estado) é que o desvio do assumido de 1,4% CFR é inteiramente baixo para subnotificação. Na realidade, o fardo para o sistema de saúde é um fator provável que contribui para estimativas superiores a 1,4% da CFR, juntamente com muitos outros fatores específicos do país.</p>
-<p>A seguir, é apresentada uma lista das outras suposições importantes feitas em nossa análise:</p>
-<ul>
-<li><p>Assumimos que as pessoas são testadas após a hospitalização. Alguns exemplos em que esse não é o caso são a Alemanha e a Coréia do Sul, onde as pessoas podem fazer o teste mais cedo.</p></li>
-<li><p>Assumimos que a hospitalização até a óbito de Wuhan é representativa (usando a distribuição parametrizada oriundo de dados de Wuhan) e que todos os países(estados) têm o mesmo perfil de risco e idade que Wuhan.</p></li>
-<li><p>Sabe-se que a gravidade do COVID-19 aumenta com a idade. Portanto, países com populações mais velhas terão naturalmente maiores taxas de mortalidade. Estamos estendendo essa análise para ajustar a distribuição etária em países com mais de cinco mortes relatadas e onde os dados de distribuição etária estão disponíveis.</p></li>
-<li><p>Todos os resultados são vinculados e viesados pelo CFR da linha de base, assumido aqui em 1,4% [3].</p></li>
-<li><p>A estimativa de subnotificação é sensível ao CFR da linha de base, o que significa que pequenos erros nela levam a grandes erros na estimativa de subnotificação.</p></li>
-<li><p>Existem várias fontes de incerteza nessa análise:</p></li>
-<li><p>a média relatada e o desvio padrão da distribuição de atraso;</p></li>
-<li><p>o cCFR para cada país (em cada dia) e o CFR da linha de base.</p></li>
-<li><p>Usamos a média e o SD inferior e superior da distribuição de atraso para produzir o intervalo mais amplo.</p></li>
-<li><p>As outras duas incertezas são realizadas diretamente nos cálculos subsequentes, que são brutos.</p></li>
-<li><p>Uma extensão contínua está desenvolvendo isso em um modelo totalmente bayesiano, que lida com essas diferentes incertezas com mais rigor.</p></li>
-</ul>
-</div>
+<p><br></br></p>
+<blockquote>
+<p>Nota técnica - <a href="https://github.com/covid19sc/covid19sc.github.io/raw/master/NT/NT_estimativa_de_subnotificacao_em_SC.pdf">ESTIMATIVA DA SUBNOTIFICAÇÃO DE CASOS DA COVID-19 NO ESTADO DE SANTA CATARINA</a></p>
+</blockquote>
+<p><br></br></p>
 
 
 
