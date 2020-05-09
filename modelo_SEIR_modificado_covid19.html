@@ -439,19 +439,142 @@ $(document).ready(function () {
 Primeira vez online: <em>não publicado</em>
 </button>
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 04-05-2020
+Atualizado em: 09-05-2020
 </button>
 <button type="button" class="btn btn-warning disabled">
 Em construção
 </button>
 <p><br></br></p>
-<p>Em construção</p>
-<div class="progress">
-<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-
+<div id="modelo-compartimento-adaptado" class="section level1">
+<h1>MODELO COMPARTIMENTO ADAPTADO</h1>
+<p>O modelo conceitual apresentado (na Figura 1) é baseado nos modelos SIR e SIER, que trata a população como grupos agregados em relação à condição frente à doença. Neste caso, assumimos que a população se divide em:</p>
+<ul>
+<li>S, susceptíveis ao agente transmissor da doença (vírus);</li>
+<li>E expostos à contaminação, mas ainda não são transmissores (latentes ou em período de incubação);</li>
+<li>I, infectados e que transmitem o vírus; R, recuperados (imunizados); e</li>
+<li>M que vieram a óbito. Os subscritos <em>n</em> e <em>g</em> indicam um caso infectado normal e um caso grave, respectivamente.</li>
+</ul>
+<p>Deste modo, o modelo pode ser representado por um conjunto de equações cinéticas, Eqs. (1) - (7), para conversão de indivíduos de um grupo para outro.</p>
+<p><span class="math display">\[
+\begin{aligned}
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+S &amp;\overset{\beta_g}{\rightarrow} E\\
+E &amp;\overset{\beta_n}{\rightarrow} I_n\\
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+S &amp;\overset{\beta_n}{\rightarrow} E\\
+\end{aligned}
+\]</span></p>
+<p>nas quais as letras gregas representam as constantes cinéticas, tais quais <span class="math inline">\(\beta_n\)</span> e <span class="math inline">\(\beta_g\)</span> <span class="math inline">\([dia^{-1}]\)</span> são as constantes de proporcionalidade diária com que indivíduos <span class="math inline">\(S\)</span> que são expostos por contato com indivíduos <span class="math inline">\(I_n\)</span> e <span class="math inline">\(I_g\)</span>, respectivamente, e tornam-se <span class="math inline">\(E\)</span>; <span class="math inline">\(\alpha\)</span> <span class="math inline">\([dia^{-1}]\)</span> é a constante de proporcionalidade diária relacionada à latência dos indivíduos <span class="math inline">\(E\)</span> para se tornarem <span class="math inline">\(I_n\)</span>; e <span class="math inline">\(\gamma\)</span> <span class="math inline">\([dia^{-1}]\)</span> é a constante de proporcionalidade diária dos indivíduos infectados normais <span class="math inline">\(I_n\)</span> que evoluem para grave <span class="math inline">\(I_g\)</span> e recuperado <span class="math inline">\(R\)</span> (<span class="math inline">\(\gamma_{n-g}\)</span> e <span class="math inline">\(\gamma_{n-R}\)</span>, respectivamente) ou <span class="math inline">\(I_g\)</span> que evoluem para recuperado<span class="math inline">\(R\)</span> e morto <span class="math inline">\(M\)</span> (<span class="math inline">\(\gamma_{g-R}\)</span> e <span class="math inline">\(\gamma_{g-M}\)</span>, respectivamente).</p>
+<p>A constante <span class="math inline">\(\beta\)</span> pode ser interpretada como o número médio de contatos adequados (i.e., contatos suficientes para a transmissão) de uma pessoa por unidade de tempo. Assim, o termo <span class="math inline">\(\beta I / N\)</span>, com <span class="math inline">\(N\)</span> sendo o total da população, é o número médio de contatos infecciosos por unidade de tempo dos indivíduos <span class="math inline">\(S\)</span>. Então, o número de novos casos por unidade de tempo devido a isto é <span class="math inline">\((\beta I⁄N)S\)</span>. Essa forma de incidência horizontal é chamada de padrão incidência [REF].</p>
 </div>
+<div id="parâmetros-cinéticos-do-modelo-matemático-epidemiológico" class="section level1">
+<h1>PARÂMETROS CINÉTICOS DO MODELO MATEMÁTICO EPIDEMIOLÓGICO</h1>
+<p>Este texto descreve o significado dos parâmetros cinéticos utilizados no modelo matemático epidemiológico usado para simular o comportamento dinâmico da pandemia da COVID-19, apresentando os valores para cada parâmetro e como foram estimados ou de onde foram extraídos com base em estudos publicados em periódicos científicos.</p>
+<p>Número básico de reprodução (R0): número de infecções secundárias causada por cada transmissor;</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(R0_n\)</span> (Normal)</li>
+<li><span class="math inline">\(R0_g\)</span> (Faixa de valores – Grave)</li>
+</ul>
+<p>Tempo Médio de Infecciosidade (Tinf): é o número médio de dias após o início dos sintomas que um indivíduo infectado levará para infectar um caso secundário.</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(T_inf\)</span></li>
+</ul>
+<p>Constante cinética da reação de contágio (<span class="math inline">\(beta\)</span>): Associada à cinética de contágio de um indivíduo suscetível por um infectado. Representa o número médio de contato por pessoa por tempo multiplicado pela probabilidade de transmissão da doença devido ao contato de um indivíduo suscetível e um infectado <span class="math inline">\([dia^{-1}]\)</span>. É também estimado por <span class="math inline">\(R0/T_inf\)</span>, onde <span class="math inline">\(R0\)</span> é o número básico de reprodutividade e <span class="math inline">\(T_inf\)</span> o tempo médio de infecciosidade;</p>
+<ul>
+<li>Estimativa do parâmetro <span class="math inline">\(beta\)</span> em função de <span class="math inline">\(R0\)</span> e do percentual de pessoas em quarentena</li>
+</ul>
+<p>O número básico de reprodução, <span class="math inline">\(R0\)</span>, é o valor médio de infecções que ocorrem quando um indivíduo infeccioso encontra uma população completamente suscetível (i.e., <span class="math inline">\(N=S\)</span>) [REF]. O número de contato, <span class="math inline">\(r\)</span>, é o valor médio de contatos efetivos (i.e., que transmitem a infecção para indivíduos <span class="math inline">\(S_i\)</span>) de um infeccioso típico durante o período infeccioso [REF]. O número de substituição <span class="math inline">\(R\)</span> é o valor médio das infecções secundárias produzidas por um infeccioso típico durante toda a duração da infecciosidade [REF]. Os valores <span class="math inline">\(R0\)</span>, <span class="math inline">\(r\)</span> e <span class="math inline">\(R\)</span> são iguais no início da propagação de uma doença infecciosa quando <span class="math inline">\(N=S\)</span>. Para a maioria dos modelos, estes valores permanecem iguais ao longo de toda a infecção e são intercambiáveis [REF], como assumiremos aqui. Assim, o valor <span class="math inline">\(\beta\)</span> é estimado como sendo <span class="math inline">\(r\)</span> ou <span class="math inline">\(R0\)</span> dividido pelo tempo médio de infecciosidade (<span class="math inline">\(T_inf\)</span>).</p>
+<p>No modelo aqui proposto considera-se que o valor efetivo do número básico de reprodução, <span class="math inline">\(R0\)</span>, é afetado por um fator multiplicador, entre zero e um <span class="math inline">\([0,1]\)</span> , que representa uma ponderação referente à adoção maior (mais próximo de zero) ou menor (mais próximo de um) pela população da quarenta ou isolamento social. Assim, na prática, o valor utilizado no modelo é uma fração do valor <span class="math inline">\(R0\)</span> caraterístico da doença.</p>
+<p>Uma proposta para estimativa desta fração é utilizar o percentual da população em quarentena, como, por exemplo, os valores oriundos das ferramentas do <a href="https://mapabrasileirodacovid.inloco.com.br/pt/">InLoco</a> que medem a movimentação diárias das pessoas por meio das conexões dos telefones celulares, e, à partir deste percentual, obter o fator multiplicado como sendo <span class="math inline">\([1 – (\%~população~em~quarentena)/100]^2\)</span>. Esta proposta se baseia no fato de que, quando uma porção da população está em quarentena, o contato dos susceptíveis e dos infectados é menor, reduzindo a taxa de contaminação que depende diretamente da quantidade de susceptíveis (agora diminuídos da fração <span class="math inline">\([1 – (\%~população~em~quarentena)/100]\)</span> e de infectados (também diminuídos da fração <span class="math inline">\([1 – (\%~população~em~quarentena)/100]\)</span>).</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(PC=[1 – (\%~população~em~quarentena)/100]^2\)</span> (Fator de quarentena)</li>
+<li><span class="math inline">\(\beta_n = PC \cdot R0_n/T_{inf}\)</span> (Normal)</li>
+<li><span class="math inline">\(\beta_g = PC \cdot R0_g/T_{inf}\)</span> (Grave)</li>
+</ul>
+<p>Tempo de Incubação (<span class="math inline">\(T_{inc}\)</span>): tempo desde a infecção até o início dos sintomas, momento a partir do qual o indivíduo contaminado permanece com o vírus incubado e não infecta outras pessoas. Durante este período o indivíduo infectado não transmite o vírus. Com base nos indivíduos com períodos de exposição e início dos sintomas bem definidos, obteve-se um tempo de incubação de <span class="math inline">\(4.8\)</span> dias (95% IC, 4.2 – 5.4) [REF].</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(T_{inc}\)</span></li>
+</ul>
+<p>Constante de latência (<span class="math inline">\(\alpha\)</span>): é a constante de proporcionalidade diária relacionada à latência ou incubação do vírus.</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(\alpha=1/T_{inc}\)</span></li>
+</ul>
+<p>Taxa de remoção de infectados (<span class="math inline">\(\gamma\)</span>): É uma constante de proporcionalidade relacionada à velocidade em que um indivíduo deixa de pertencer a uma população específica de infectados.</p>
+<p>Parâmetros do modelo:</p>
+<ul>
+<li><span class="math inline">\(\gamma_{n-G} =1/(tempo~para~passar~de~não~grave~para~grave)\)</span></li>
+<li><span class="math inline">\(\gamma_n-R = 1/(tempo~para~recuperação~de~ um~ não~ grave)\)</span></li>
+<li><span class="math inline">\(\gamma_g-R = 1/(tempo~para~recuperação~ de~ um~ grave)\)</span></li>
+<li><span class="math inline">\(\gamma_g-M = 1/(tempo~para~óbito~ e~ um~ grave)\)</span></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="right"><span class="math inline">\(\beta_0\)</span></th>
+<th align="right"><span class="math inline">\(\beta_A\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="right"><span class="math inline">\(\beta_0\)</span></th>
+<th align="right"><span class="math inline">\(\beta_A\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\beta\)</span></td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\beta\)</span></td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(R0\)</span></li>
+<li><span class="math inline">\(R0_n\)</span> (Normal)</li>
+<li><span class="math inline">\(R0_g\)</span> (Faixa de valores – Grave)</li>
+<li><span class="math inline">\(R\)</span></li>
+<li><span class="math inline">\(T_inf\)</span></li>
+<li><span class="math inline">\(\beta\)</span></li>
+<li><span class="math inline">\(PC=[1 – (\%~população~em~quarentena)/100]^2\)</span> (Fator de quarentena)</li>
+<li><span class="math inline">\(\beta_n = PC \cdot R0_n/T_{inf}\)</span> (Normal)</li>
+<li><span class="math inline">\(\beta_g = PC \cdot R0_g/T_{inf}\)</span> (Grave)</li>
+<li><span class="math inline">\(T_{inc}\)</span></li>
+<li><span class="math inline">\(\alpha=1/T_{inc}\)</span></li>
+<li><span class="math inline">\(\gamma_{n-G} =1/(tempo~para~passar~de~não~grave~para~grave)\)</span></li>
+<li><span class="math inline">\(\gamma_n-R = 1/(tempo~para~recuperação~de~ um~ não~ grave)\)</span></li>
+<li><span class="math inline">\(\gamma_g-R = 1/(tempo~para~recuperação~ de~ um~ grave)\)</span></li>
+<li><span class="math inline">\(\gamma_g-M = 1/(tempo~para~óbito~ e~ um~ grave)\)</span></li>
+</ul>
 </div>
-<p><br></br></p>
 
 
 

@@ -23,6 +23,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -436,12 +440,111 @@ $(document).ready(function () {
 
 
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 04-05-2020
+Atualizado em: 09-05-2020
 </button>
 <p><br></br></p>
 <p>Óbitos por dia em cada um dos estados da federação.</p>
 <p><br></br></p>
-<p><img src="fig/obitos_AC.png" width="100%" /><img src="fig/obitos_AL.png" width="100%" /><img src="fig/obitos_AM.png" width="100%" /><img src="fig/obitos_AP.png" width="100%" /><img src="fig/obitos_BA.png" width="100%" /><img src="fig/obitos_CE.png" width="100%" /><img src="fig/obitos_DF.png" width="100%" /><img src="fig/obitos_ES.png" width="100%" /><img src="fig/obitos_GO.png" width="100%" /><img src="fig/obitos_MA.png" width="100%" /><img src="fig/obitos_MG.png" width="100%" /><img src="fig/obitos_MS.png" width="100%" /><img src="fig/obitos_MT.png" width="100%" /><img src="fig/obitos_PA.png" width="100%" /><img src="fig/obitos_PB.png" width="100%" /><img src="fig/obitos_PE.png" width="100%" /><img src="fig/obitos_PI.png" width="100%" /><img src="fig/obitos_PR.png" width="100%" /><img src="fig/obitos_RJ.png" width="100%" /><img src="fig/obitos_RN.png" width="100%" /><img src="fig/obitos_RO.png" width="100%" /><img src="fig/obitos_RR.png" width="100%" /><img src="fig/obitos_RS.png" width="100%" /><img src="fig/obitos_SC.png" width="100%" /><img src="fig/obitos_SE.png" width="100%" /><img src="fig/obitos_SP.png" width="100%" /><img src="fig/obitos_TO.png" width="100%" /></p>
+
+<html>
+<select id="6zDIGvovJT" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/obitos_AC.png">AC</option>
+<option value="fig/obitos_AL.png">AL</option>
+<option value="fig/obitos_AM.png">AM</option>
+<option value="fig/obitos_AP.png">AP</option>
+<option value="fig/obitos_BA.png">BA</option>
+<option value="fig/obitos_CE.png">CE</option>
+<option value="fig/obitos_DF.png">DF</option>
+<option value="fig/obitos_ES.png">ES</option>
+<option value="fig/obitos_GO.png">GO</option>
+<option value="fig/obitos_MA.png">MA</option>
+<option value="fig/obitos_MG.png">MG</option>
+<option value="fig/obitos_MS.png">MS</option>
+<option value="fig/obitos_MT.png">MT</option>
+<option value="fig/obitos_PA.png">PA</option>
+<option value="fig/obitos_PB.png">PB</option>
+<option value="fig/obitos_PE.png">PE</option>
+<option value="fig/obitos_PI.png">PI</option>
+<option value="fig/obitos_PR.png">PR</option>
+<option value="fig/obitos_RJ.png">RJ</option>
+<option value="fig/obitos_RN.png">RN</option>
+<option value="fig/obitos_RO.png">RO</option>
+<option value="fig/obitos_RR.png">RR</option>
+<option value="fig/obitos_RS.png">RS</option>
+<option value="fig/obitos_SC.png" selected>SC</option>
+<option value="fig/obitos_SE.png">SE</option>
+<option value="fig/obitos_SP.png">SP</option>
+<option value="fig/obitos_TO.png">TO</option></select>
+<img src="fig/obitos_SC.png" name="m6qyUgQPhi" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#6zDIGvovJT").change(function(){
+                 $("img[name=m6qyUgQPhi]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-ecc719a146f7e3eedff5" style="width:672px;height:480px;" class="bsselect html-widget" width="672" height="480"></div>
+<script type="application/json" data-for="htmlwidget-ecc719a146f7e3eedff5">{"x":[],"evals":[],"jsHooks":[]}</script>
+<!-- ```{r, echo=FALSE} -->
+<!-- images = c( -->
+<!--   "fig/obitos_AC.png", #1 -->
+<!--   "fig/obitos_AL.png", #2 -->
+<!--   "fig/obitos_AM.png", -->
+<!--   "fig/obitos_AP.png", -->
+<!--   "fig/obitos_BA.png", -->
+<!--   "fig/obitos_CE.png", -->
+<!--   "fig/obitos_DF.png", -->
+<!--   "fig/obitos_ES.png", -->
+<!--   "fig/obitos_GO.png", -->
+<!--   "fig/obitos_MA.png", -->
+<!--   "fig/obitos_MG.png", -->
+<!--   "fig/obitos_MS.png", -->
+<!--   "fig/obitos_MT.png", -->
+<!--   "fig/obitos_PA.png", -->
+<!--   "fig/obitos_PB.png", -->
+<!--   "fig/obitos_PE.png", -->
+<!--   "fig/obitos_PI.png", -->
+<!--   "fig/obitos_PR.png", -->
+<!--   "fig/obitos_RJ.png", -->
+<!--   "fig/obitos_RN.png", -->
+<!--   "fig/obitos_RO.png", -->
+<!--   "fig/obitos_RR.png", -->
+<!--   "fig/obitos_RS.png", -->
+<!--   "fig/obitos_SC.png", -->
+<!--   "fig/obitos_SE.png", -->
+<!--   "fig/obitos_SP.png", -->
+<!--   "fig/obitos_TO.png" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- ```{r,out.width = "100%", fig.show = "hold", echo=FALSE} -->
+<!-- knitr::include_graphics(images[1]) -->
+<!-- knitr::include_graphics(images[2]) -->
+<!-- knitr::include_graphics(images[3]) -->
+<!-- knitr::include_graphics(images[4]) -->
+<!-- knitr::include_graphics(images[5]) -->
+<!-- knitr::include_graphics(images[6]) -->
+<!-- knitr::include_graphics(images[7]) -->
+<!-- knitr::include_graphics(images[8]) -->
+<!-- knitr::include_graphics(images[9]) -->
+<!-- knitr::include_graphics(images[10]) -->
+<!-- knitr::include_graphics(images[11]) -->
+<!-- knitr::include_graphics(images[12]) -->
+<!-- knitr::include_graphics(images[13]) -->
+<!-- knitr::include_graphics(images[14]) -->
+<!-- knitr::include_graphics(images[15]) -->
+<!-- knitr::include_graphics(images[16]) -->
+<!-- knitr::include_graphics(images[17]) -->
+<!-- knitr::include_graphics(images[18]) -->
+<!-- knitr::include_graphics(images[19]) -->
+<!-- knitr::include_graphics(images[20]) -->
+<!-- knitr::include_graphics(images[21]) -->
+<!-- knitr::include_graphics(images[22]) -->
+<!-- knitr::include_graphics(images[23]) -->
+<!-- knitr::include_graphics(images[24]) -->
+<!-- knitr::include_graphics(images[25]) -->
+<!-- knitr::include_graphics(images[26]) -->
+<!-- knitr::include_graphics(images[27]) -->
+<!-- ``` -->
 
 
 

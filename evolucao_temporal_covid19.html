@@ -23,6 +23,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -436,12 +440,112 @@ $(document).ready(function () {
 
 
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 04-05-2020
+Atualizado em: 09-05-2020
 </button>
 <p><br></br></p>
 <p>Evolução temporal dos casos confirmados por estado, modelo de previsão utilizado é o modelo de Gompertz, com parâmetros ajustados de acordo com os dados. A cada conjunto de dados é feito um ajuste. Os ajustes se iniciam com as 15 primeiras observações, depois 16, 17, até o dado final obtido na data da publicação.</p>
 <p><br></br></p>
-<p><img src="fig/plot_anim_AC.gif" width="100%" /><img src="fig/plot_anim_AL.gif" width="100%" /><img src="fig/plot_anim_AM.gif" width="100%" /><img src="fig/plot_anim_AP.gif" width="100%" /><img src="fig/plot_anim_BA.gif" width="100%" /><img src="fig/plot_anim_CE.gif" width="100%" /><img src="fig/plot_anim_DF.gif" width="100%" /><img src="fig/plot_anim_ES.gif" width="100%" /><img src="fig/plot_anim_GO.gif" width="100%" /><img src="fig/plot_anim_MA.gif" width="100%" /><img src="fig/plot_anim_MG.gif" width="100%" /><img src="fig/plot_anim_MS.gif" width="100%" /><img src="fig/plot_anim_MT.gif" width="100%" /><img src="fig/plot_anim_PA.gif" width="100%" /><img src="fig/plot_anim_PB.gif" width="100%" /><img src="fig/plot_anim_PE.gif" width="100%" /><img src="fig/plot_anim_PI.gif" width="100%" /><img src="fig/plot_anim_PR.gif" width="100%" /><img src="fig/plot_anim_RJ.gif" width="100%" /><img src="fig/plot_anim_RN.gif" width="100%" /><img src="fig/plot_anim_RO.gif" width="100%" /><img src="fig/plot_anim_RR.gif" width="100%" /><img src="fig/plot_anim_RS.gif" width="100%" /><img src="fig/plot_anim_SC.gif" width="100%" /><img src="fig/plot_anim_SE.gif" width="100%" /><img src="fig/plot_anim_SP.gif" width="100%" /><img src="fig/plot_anim_TO.gif" width="100%" /></p>
+
+<html>
+<select id="9u9xCCl6b9" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/plot_anim_AC.gif">AC</option>
+<option value="fig/plot_anim_AL.gif">AL</option>
+<option value="fig/plot_anim_AM.gif">AM</option>
+<option value="fig/plot_anim_AP.gif">AP</option>
+<option value="fig/plot_anim_area_SC.gif">area_SC</option>
+<option value="fig/plot_anim_BA.gif">BA</option>
+<option value="fig/plot_anim_CE.gif">CE</option>
+<option value="fig/plot_anim_DF.gif">DF</option>
+<option value="fig/plot_anim_ES.gif">ES</option>
+<option value="fig/plot_anim_GO.gif">GO</option>
+<option value="fig/plot_anim_MA.gif">MA</option>
+<option value="fig/plot_anim_MG.gif">MG</option>
+<option value="fig/plot_anim_MS.gif">MS</option>
+<option value="fig/plot_anim_MT.gif">MT</option>
+<option value="fig/plot_anim_PA.gif">PA</option>
+<option value="fig/plot_anim_PB.gif">PB</option>
+<option value="fig/plot_anim_PE.gif">PE</option>
+<option value="fig/plot_anim_PI.gif">PI</option>
+<option value="fig/plot_anim_PR.gif">PR</option>
+<option value="fig/plot_anim_RJ.gif">RJ</option>
+<option value="fig/plot_anim_RN.gif">RN</option>
+<option value="fig/plot_anim_RO.gif">RO</option>
+<option value="fig/plot_anim_RR.gif">RR</option>
+<option value="fig/plot_anim_RS.gif">RS</option>
+<option value="fig/plot_anim_SC.gif" selected>SC</option>
+<option value="fig/plot_anim_SE.gif">SE</option>
+<option value="fig/plot_anim_SP.gif">SP</option>
+<option value="fig/plot_anim_TO.gif">TO</option></select>
+<img src="fig/plot_anim_SC.gif" name="GtX8UxTEZs" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#9u9xCCl6b9").change(function(){
+                 $("img[name=GtX8UxTEZs]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-fce56cb60717a8cc058e" style="width:672px;height:480px;" class="bsselect html-widget" width="672" height="480"></div>
+<script type="application/json" data-for="htmlwidget-fce56cb60717a8cc058e">{"x":[],"evals":[],"jsHooks":[]}</script>
+<!-- ```{r, echo=FALSE} -->
+<!-- images = c( -->
+<!--   "fig/plot_anim_AC.gif", #1 -->
+<!--   "fig/plot_anim_AL.gif", #2 -->
+<!--   "fig/plot_anim_AM.gif", -->
+<!--   "fig/plot_anim_AP.gif", -->
+<!--   "fig/plot_anim_BA.gif", -->
+<!--   "fig/plot_anim_CE.gif", -->
+<!--   "fig/plot_anim_DF.gif", -->
+<!--   "fig/plot_anim_ES.gif", -->
+<!--   "fig/plot_anim_GO.gif", -->
+<!--   "fig/plot_anim_MA.gif", -->
+<!--   "fig/plot_anim_MG.gif", -->
+<!--   "fig/plot_anim_MS.gif", -->
+<!--   "fig/plot_anim_MT.gif", -->
+<!--   "fig/plot_anim_PA.gif", -->
+<!--   "fig/plot_anim_PB.gif", -->
+<!--   "fig/plot_anim_PE.gif", -->
+<!--   "fig/plot_anim_PI.gif", -->
+<!--   "fig/plot_anim_PR.gif", -->
+<!--   "fig/plot_anim_RJ.gif", -->
+<!--   "fig/plot_anim_RN.gif", -->
+<!--   "fig/plot_anim_RO.gif", -->
+<!--   "fig/plot_anim_RR.gif", -->
+<!--   "fig/plot_anim_RS.gif", -->
+<!--   "fig/plot_anim_SC.gif", -->
+<!--   "fig/plot_anim_SE.gif", -->
+<!--   "fig/plot_anim_SP.gif", -->
+<!--   "fig/plot_anim_TO.gif" -->
+<!-- ) -->
+<!-- ``` -->
+<!-- ```{r,out.width = "100%", fig.show = "hold", echo=FALSE} -->
+<!-- knitr::include_graphics(images[1]) -->
+<!-- knitr::include_graphics(images[2]) -->
+<!-- knitr::include_graphics(images[3]) -->
+<!-- knitr::include_graphics(images[4]) -->
+<!-- knitr::include_graphics(images[5]) -->
+<!-- knitr::include_graphics(images[6]) -->
+<!-- knitr::include_graphics(images[7]) -->
+<!-- knitr::include_graphics(images[8]) -->
+<!-- knitr::include_graphics(images[9]) -->
+<!-- knitr::include_graphics(images[10]) -->
+<!-- knitr::include_graphics(images[11]) -->
+<!-- knitr::include_graphics(images[12]) -->
+<!-- knitr::include_graphics(images[13]) -->
+<!-- knitr::include_graphics(images[14]) -->
+<!-- knitr::include_graphics(images[15]) -->
+<!-- knitr::include_graphics(images[16]) -->
+<!-- knitr::include_graphics(images[17]) -->
+<!-- knitr::include_graphics(images[18]) -->
+<!-- knitr::include_graphics(images[19]) -->
+<!-- knitr::include_graphics(images[20]) -->
+<!-- knitr::include_graphics(images[21]) -->
+<!-- knitr::include_graphics(images[22]) -->
+<!-- knitr::include_graphics(images[23]) -->
+<!-- knitr::include_graphics(images[24]) -->
+<!-- knitr::include_graphics(images[25]) -->
+<!-- knitr::include_graphics(images[26]) -->
+<!-- knitr::include_graphics(images[27]) -->
+<!-- ``` -->
 
 
 

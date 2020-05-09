@@ -23,6 +23,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -436,28 +440,96 @@ $(document).ready(function () {
 
 
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 04-05-2020
+Atualizado em: 09-05-2020
 </button>
 <p><br></br></p>
 <p>Previsão de crescimento exponencial dos infectados em cada um dos estados da federação, com margem de predição.</p>
-<p>O método utilizado para o cálculo das curvas de predição estão decritos na seção <a href="https://covid19sc.github.io/metodo_estimativa_exponencial.html">Métodos</a></p>
-<div id="resultados-de-confirmados-por-estado" class="section level2 tabset">
-<h2>Resultados de confirmados por estado</h2>
-<div id="confirmados-por-100-000-habitantes" class="section level3">
-<h3>Confirmados por 100 000 habitantes</h3>
-<p><strong>Escala fixada em todos os gráficos</strong>: 200 por 100 000 habitantes</p>
-<p><img src="fig/fitexp_100M_AC.png" width="100%" /><img src="fig/fitexp_100M_AL.png" width="100%" /><img src="fig/fitexp_100M_AM.png" width="100%" /><img src="fig/fitexp_100M_AP.png" width="100%" /><img src="fig/fitexp_100M_BA.png" width="100%" /><img src="fig/fitexp_100M_CE.png" width="100%" /><img src="fig/fitexp_100M_DF.png" width="100%" /><img src="fig/fitexp_100M_ES.png" width="100%" /><img src="fig/fitexp_100M_GO.png" width="100%" /><img src="fig/fitexp_100M_MA.png" width="100%" /><img src="fig/fitexp_100M_MG.png" width="100%" /><img src="fig/fitexp_100M_MS.png" width="100%" /><img src="fig/fitexp_100M_MT.png" width="100%" /><img src="fig/fitexp_100M_PA.png" width="100%" /><img src="fig/fitexp_100M_PB.png" width="100%" /><img src="fig/fitexp_100M_PE.png" width="100%" /><img src="fig/fitexp_100M_PI.png" width="100%" /><img src="fig/fitexp_100M_PR.png" width="100%" /><img src="fig/fitexp_100M_RJ.png" width="100%" /><img src="fig/fitexp_100M_RN.png" width="100%" /><img src="fig/fitexp_100M_RO.png" width="100%" /><img src="fig/fitexp_100M_RR.png" width="100%" /><img src="fig/fitexp_100M_RS.png" width="100%" /><img src="fig/fitexp_100M_SC.png" width="100%" /><img src="fig/fitexp_100M_SE.png" width="100%" /><img src="fig/fitexp_100M_SP.png" width="100%" /><img src="fig/fitexp_100M_TO.png" width="100%" /></p>
+<p>O método utilizado para o cálculo das curvas de predição estão decritos na seção <a href="https://covid19sc.github.io/metodo_estimativa_exponencial.html">Métodos e Modelos</a></p>
+<div id="resultados-de-confirmados-por-estado-em-valores-absolutos" class="section level2">
+<h2>Resultados de confirmados por estado em valores absolutos</h2>
+
+<html>
+<select id="ZFYarOogHF" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/fitGomp_ABS_AC.png">AC</option>
+<option value="fig/fitGomp_ABS_AL.png">AL</option>
+<option value="fig/fitGomp_ABS_AM.png">AM</option>
+<option value="fig/fitGomp_ABS_AP.png">AP</option>
+<option value="fig/fitGomp_ABS_BA.png">BA</option>
+<option value="fig/fitGomp_ABS_CE.png">CE</option>
+<option value="fig/fitGomp_ABS_DF.png">DF</option>
+<option value="fig/fitGomp_ABS_ES.png">ES</option>
+<option value="fig/fitGomp_ABS_GO.png">GO</option>
+<option value="fig/fitGomp_ABS_MA.png">MA</option>
+<option value="fig/fitGomp_ABS_MG.png">MG</option>
+<option value="fig/fitGomp_ABS_MS.png">MS</option>
+<option value="fig/fitGomp_ABS_MT.png">MT</option>
+<option value="fig/fitGomp_ABS_PA.png">PA</option>
+<option value="fig/fitGomp_ABS_PB.png">PB</option>
+<option value="fig/fitGomp_ABS_PE.png">PE</option>
+<option value="fig/fitGomp_ABS_PI.png">PI</option>
+<option value="fig/fitGomp_ABS_PR.png">PR</option>
+<option value="fig/fitGomp_ABS_RJ.png">RJ</option>
+<option value="fig/fitGomp_ABS_RN.png">RN</option>
+<option value="fig/fitGomp_ABS_RO.png">RO</option>
+<option value="fig/fitGomp_ABS_RR.png">RR</option>
+<option value="fig/fitGomp_ABS_RS.png">RS</option>
+<option value="fig/fitGomp_ABS_SC.png" selected>SC</option>
+<option value="fig/fitGomp_ABS_SE.png">SE</option>
+<option value="fig/fitGomp_ABS_SP.png">SP</option>
+<option value="fig/fitGomp_ABS_TO.png">TO</option></select>
+<img src="fig/fitGomp_ABS_SC.png" name="iqFHEIzvNG" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#ZFYarOogHF").change(function(){
+                 $("img[name=iqFHEIzvNG]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-d55d133f9c47acb8e23c" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-d55d133f9c47acb8e23c">{"x":[],"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="confirmados-absolutos" class="section level3">
-<h3>Confirmados (absolutos)</h3>
-<p><strong>Escala fixada nos gráficos segue a seguinte regra</strong>:</p>
-<ul>
-<li>Total &lt; 5 000, escala será no máximo 5000</li>
-<li>5000 &lt;= Total &lt; 10 000, escala será no máximo 10 000</li>
-<li>Total &gt;= 10 000, escala será no máximo 35 000</li>
-</ul>
-<p><img src="fig/fitexp_ABS_AC.png" width="100%" /><img src="fig/fitexp_ABS_AL.png" width="100%" /><img src="fig/fitexp_ABS_AM.png" width="100%" /><img src="fig/fitexp_ABS_AP.png" width="100%" /><img src="fig/fitexp_ABS_BA.png" width="100%" /><img src="fig/fitexp_ABS_CE.png" width="100%" /><img src="fig/fitexp_ABS_DF.png" width="100%" /><img src="fig/fitexp_ABS_ES.png" width="100%" /><img src="fig/fitexp_ABS_GO.png" width="100%" /><img src="fig/fitexp_ABS_MA.png" width="100%" /><img src="fig/fitexp_ABS_MG.png" width="100%" /><img src="fig/fitexp_ABS_MS.png" width="100%" /><img src="fig/fitexp_ABS_MT.png" width="100%" /><img src="fig/fitexp_ABS_PA.png" width="100%" /><img src="fig/fitexp_ABS_PB.png" width="100%" /><img src="fig/fitexp_ABS_PE.png" width="100%" /><img src="fig/fitexp_ABS_PI.png" width="100%" /><img src="fig/fitexp_ABS_PR.png" width="100%" /><img src="fig/fitexp_ABS_RJ.png" width="100%" /><img src="fig/fitexp_ABS_RN.png" width="100%" /><img src="fig/fitexp_ABS_RO.png" width="100%" /><img src="fig/fitexp_ABS_RR.png" width="100%" /><img src="fig/fitexp_ABS_RS.png" width="100%" /><img src="fig/fitexp_ABS_SC.png" width="100%" /><img src="fig/fitexp_ABS_SE.png" width="100%" /><img src="fig/fitexp_ABS_SP.png" width="100%" /><img src="fig/fitexp_ABS_TO.png" width="100%" /></p>
-</div>
+<div id="resultados-de-confirmados-por-estado-por-100-000-habitantes" class="section level2">
+<h2>Resultados de confirmados por estado por 100 000 habitantes</h2>
+
+<html>
+<select id="IVxnaMTYnt" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/fitGomp_100M_AC.png">AC</option>
+<option value="fig/fitGomp_100M_AL.png">AL</option>
+<option value="fig/fitGomp_100M_AM.png">AM</option>
+<option value="fig/fitGomp_100M_AP.png">AP</option>
+<option value="fig/fitGomp_100M_BA.png">BA</option>
+<option value="fig/fitGomp_100M_CE.png">CE</option>
+<option value="fig/fitGomp_100M_DF.png">DF</option>
+<option value="fig/fitGomp_100M_ES.png">ES</option>
+<option value="fig/fitGomp_100M_GO.png">GO</option>
+<option value="fig/fitGomp_100M_MA.png">MA</option>
+<option value="fig/fitGomp_100M_MG.png">MG</option>
+<option value="fig/fitGomp_100M_MS.png">MS</option>
+<option value="fig/fitGomp_100M_MT.png">MT</option>
+<option value="fig/fitGomp_100M_PA.png">PA</option>
+<option value="fig/fitGomp_100M_PB.png">PB</option>
+<option value="fig/fitGomp_100M_PE.png">PE</option>
+<option value="fig/fitGomp_100M_PI.png">PI</option>
+<option value="fig/fitGomp_100M_PR.png">PR</option>
+<option value="fig/fitGomp_100M_RJ.png">RJ</option>
+<option value="fig/fitGomp_100M_RN.png">RN</option>
+<option value="fig/fitGomp_100M_RO.png">RO</option>
+<option value="fig/fitGomp_100M_RR.png">RR</option>
+<option value="fig/fitGomp_100M_RS.png">RS</option>
+<option value="fig/fitGomp_100M_SC.png" selected>SC</option>
+<option value="fig/fitGomp_100M_SE.png">SE</option>
+<option value="fig/fitGomp_100M_SP.png">SP</option>
+<option value="fig/fitGomp_100M_TO.png">TO</option></select>
+<img src="fig/fitGomp_100M_SC.png" name="TBmZMVkHGo" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#IVxnaMTYnt").change(function(){
+                 $("img[name=TBmZMVkHGo]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-668c77225b9797e7083a" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-668c77225b9797e7083a">{"x":[],"evals":[],"jsHooks":[]}</script>
 <div id="como-ler-este-gráfico" class="section level3">
 <h3>Como ler este gráfico</h3>
 <p><img src="fig/explicacao_figura.png" width="100%" /></p>
