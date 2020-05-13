@@ -23,6 +23,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -468,13 +472,137 @@ Atualizado em: 13-05-2020
 Em construção
 </button>
 <p><br></br></p>
-<p>Em construção</p>
-<div class="progress">
-<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 10%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+<div id="casos" class="section level1">
+<h1>Casos</h1>
+<div id="taxa-de-crescimento-diária-dos-casos-em-todos-os-estados-por-data" class="section level2">
+<h2>Taxa de crescimento diária dos casos em todos os estados por data</h2>
+<p>Selecione a data da avaliação</p>
 
+<html>
+<select id="IVxnaMTYnt" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/taxa_cresc_casos_agrupado_2020-05-12.png">2020-05-12</option></select>
+<img src="fig/taxa_cresc_casos_agrupado_2020-05-12.png" name="TBmZMVkHGo" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#IVxnaMTYnt").change(function(){
+                 $("img[name=TBmZMVkHGo]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-668c77225b9797e7083a" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-668c77225b9797e7083a">{"x":[],"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="taxa-de-crescimento-diária-dos-casos-por-estado" class="section level2">
+<h2>Taxa de crescimento diária dos casos por estado</h2>
+<p>Selecione o estado</p>
+
+<html>
+<select id="ZbGmrc3Z3l" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/taxa_cresc_diaria_casos_AC.png">AC</option>
+<option value="fig/taxa_cresc_diaria_casos_AL.png">AL</option>
+<option value="fig/taxa_cresc_diaria_casos_AM.png">AM</option>
+<option value="fig/taxa_cresc_diaria_casos_AP.png">AP</option>
+<option value="fig/taxa_cresc_diaria_casos_BA.png">BA</option>
+<option value="fig/taxa_cresc_diaria_casos_CE.png">CE</option>
+<option value="fig/taxa_cresc_diaria_casos_DF.png">DF</option>
+<option value="fig/taxa_cresc_diaria_casos_ES.png">ES</option>
+<option value="fig/taxa_cresc_diaria_casos_GO.png">GO</option>
+<option value="fig/taxa_cresc_diaria_casos_MA.png">MA</option>
+<option value="fig/taxa_cresc_diaria_casos_MG.png">MG</option>
+<option value="fig/taxa_cresc_diaria_casos_MS.png">MS</option>
+<option value="fig/taxa_cresc_diaria_casos_MT.png">MT</option>
+<option value="fig/taxa_cresc_diaria_casos_PA.png">PA</option>
+<option value="fig/taxa_cresc_diaria_casos_PB.png">PB</option>
+<option value="fig/taxa_cresc_diaria_casos_PE.png">PE</option>
+<option value="fig/taxa_cresc_diaria_casos_PI.png">PI</option>
+<option value="fig/taxa_cresc_diaria_casos_PR.png">PR</option>
+<option value="fig/taxa_cresc_diaria_casos_RJ.png">RJ</option>
+<option value="fig/taxa_cresc_diaria_casos_RN.png">RN</option>
+<option value="fig/taxa_cresc_diaria_casos_RO.png">RO</option>
+<option value="fig/taxa_cresc_diaria_casos_RR.png">RR</option>
+<option value="fig/taxa_cresc_diaria_casos_RS.png">RS</option>
+<option value="fig/taxa_cresc_diaria_casos_SC.png" selected>SC</option>
+<option value="fig/taxa_cresc_diaria_casos_SE.png">SE</option>
+<option value="fig/taxa_cresc_diaria_casos_SP.png">SP</option>
+<option value="fig/taxa_cresc_diaria_casos_TO.png">TO</option></select>
+<img src="fig/taxa_cresc_diaria_casos_SC.png" name="BczEtRkl05" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#ZbGmrc3Z3l").change(function(){
+                 $("img[name=BczEtRkl05]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-8788b93d6f3011f12d32" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-8788b93d6f3011f12d32">{"x":[],"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p><br></br></p>
+<div id="óbitos" class="section level1">
+<h1>Óbitos</h1>
+<div id="taxa-de-crescimento-diária-dos-óbitos-em-todos-os-estados-por-data" class="section level2">
+<h2>Taxa de crescimento diária dos óbitos em todos os estados por data</h2>
+<p>Selecione a data da avaliação</p>
+
+<html>
+<select id="CMMeJmSWov" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/taxa_cresc_obitos_agrupada_2020-05-12.png">2020-05-12</option></select>
+<img src="fig/taxa_cresc_obitos_agrupada_2020-05-12.png" name="hrcmJZvO9Z" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#CMMeJmSWov").change(function(){
+                 $("img[name=hrcmJZvO9Z]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-af15bebf6800aa952f5f" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-af15bebf6800aa952f5f">{"x":[],"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="taxa-de-crescimento-diária-dos-óbitos-por-estado" class="section level2">
+<h2>Taxa de crescimento diária dos óbitos por estado</h2>
+<p>Selecione o estado</p>
+
+<html>
+<select id="uGieyght9y" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/taxa_cresc_obitos_AC.png">AC</option>
+<option value="fig/taxa_cresc_obitos_agrupada_2020-05-12.png">agrupada_2020-05-12</option>
+<option value="fig/taxa_cresc_obitos_AL.png">AL</option>
+<option value="fig/taxa_cresc_obitos_AM.png">AM</option>
+<option value="fig/taxa_cresc_obitos_AP.png">AP</option>
+<option value="fig/taxa_cresc_obitos_BA.png">BA</option>
+<option value="fig/taxa_cresc_obitos_CE.png">CE</option>
+<option value="fig/taxa_cresc_obitos_DF.png">DF</option>
+<option value="fig/taxa_cresc_obitos_ES.png">ES</option>
+<option value="fig/taxa_cresc_obitos_GO.png">GO</option>
+<option value="fig/taxa_cresc_obitos_MA.png">MA</option>
+<option value="fig/taxa_cresc_obitos_MG.png">MG</option>
+<option value="fig/taxa_cresc_obitos_MS.png">MS</option>
+<option value="fig/taxa_cresc_obitos_MT.png">MT</option>
+<option value="fig/taxa_cresc_obitos_PA.png">PA</option>
+<option value="fig/taxa_cresc_obitos_PB.png">PB</option>
+<option value="fig/taxa_cresc_obitos_PE.png">PE</option>
+<option value="fig/taxa_cresc_obitos_PI.png">PI</option>
+<option value="fig/taxa_cresc_obitos_PR.png">PR</option>
+<option value="fig/taxa_cresc_obitos_RJ.png">RJ</option>
+<option value="fig/taxa_cresc_obitos_RN.png">RN</option>
+<option value="fig/taxa_cresc_obitos_RO.png">RO</option>
+<option value="fig/taxa_cresc_obitos_RR.png">RR</option>
+<option value="fig/taxa_cresc_obitos_RS.png">RS</option>
+<option value="fig/taxa_cresc_obitos_SC.png" selected>SC</option>
+<option value="fig/taxa_cresc_obitos_SE.png">SE</option>
+<option value="fig/taxa_cresc_obitos_SP.png">SP</option>
+<option value="fig/taxa_cresc_obitos_TO.png">TO</option></select>
+<img src="fig/taxa_cresc_obitos_SC.png" name="Wfwt2fnJbB" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#uGieyght9y").change(function(){
+                 $("img[name=Wfwt2fnJbB]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-f284ec27c0b1f9c50b4d" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-f284ec27c0b1f9c50b4d">{"x":[],"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
 
