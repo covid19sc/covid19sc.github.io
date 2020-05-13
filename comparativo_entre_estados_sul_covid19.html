@@ -281,13 +281,29 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">COVID-19-SC/Brasil</a>
+      <a class="navbar-brand" href="index.html">COVID19-SC</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Brasil
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="comparativo_paises_covid19.html">Comparativos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="evolucao_brasil_covid19.html">Evolução no país</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Estados
      
     <span class="caret"></span>
   </a>
@@ -303,74 +319,75 @@ $(document).ready(function () {
     <li>
       <a href="obitos_por_estado_covid19.html">Óbitos por estado</a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Estados
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Santa Catarina</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_SC_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_florianopolis_covid19.html">Florianópolis</a>
-        </li>
-        <li>
-          <a href="cidade_joinvile_covid19.html">Joinville</a>
-        </li>
-      </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Paraná</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_PR_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_curitiba_covid19.html">Curitiba</a>
-        </li>
-      </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Rio Grande do Sul</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_RS_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_portoalegre_covid19.html">Porto Alegre</a>
-        </li>
-      </ul>
-    </li>
+    <li class="divider"></li>
     <li>
       <a href="comparativo_estados_covid19.html">Comparativo entre estados</a>
     </li>
+    <li class="divider"></li>
+    <li>
+      <a href="incidencia_estados_covid19.html">Incidência nos estados</a>
+    </li>
+    <li class="divider"></li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Subnotificação
+    Santa Catarina
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="subnotificacao_covid19.html">Nota técnica</a>
+      <a href="estado_SC_covid19.html">Análises do estado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="leitos_SC_covid19.html">Leitos Hospitalares</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="mapas_sc_covid19.html">Mapas</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="comparativo_sc_covid19.html">Comparativos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="subnotificacao_covid19.html">Subnotificação</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Macroregiões</li>
+    <li class="divider"></li>
+    <li>
+      <a href="regiao_fln_covid19.html">Grande Florianópolis</a>
+    </li>
+    <li>
+      <a href="regiao_fi_covid19.html">Foz do Itajaí</a>
+    </li>
+    <li>
+      <a href="regiao_pnne_covid19.html">Planalto N/NE</a>
+    </li>
+    <li>
+      <a href="regiao_av_covid19.html">Alto Vale</a>
+    </li>
+    <li>
+      <a href="regiao_mo_covid19.html">Meio Oeste</a>
+    </li>
+    <li>
+      <a href="regiao_sul_covid19.html">Região Sul</a>
+    </li>
+    <li>
+      <a href="regiao_go_covid19.html">Grande Oeste</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cidades</li>
+    <li class="divider"></li>
+    <li>
+      <a href="cidade_florianopolis_covid19.html">Florianópolis</a>
+    </li>
+    <li>
+      <a href="cidade_joinvile_covid19.html">Joinville</a>
     </li>
   </ul>
 </li>
@@ -403,12 +420,21 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência </a>
+      <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência - remdesivir </a>
     </li>
   </ul>
 </li>
-<li>
-  <a href="equipe.html">Equipe</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Equipe/News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="equipe.html">Equipe</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -435,7 +461,7 @@ $(document).ready(function () {
 </div>
 
 
-<p>Atualizado em: 09-05-2020</p>
+<p>Atualizado em: 13-05-2020</p>
 <pre class="r"><code>images = c(
   &quot;fig/fitexp_PR.png&quot;, # 1 PR
   &quot;fig/obitos_PR.png&quot;,

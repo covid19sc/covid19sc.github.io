@@ -281,13 +281,29 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">COVID-19-SC/Brasil</a>
+      <a class="navbar-brand" href="index.html">COVID19-SC</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Brasil
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="comparativo_paises_covid19.html">Comparativos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="evolucao_brasil_covid19.html">Evolução no país</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Estados
      
     <span class="caret"></span>
   </a>
@@ -303,74 +319,75 @@ $(document).ready(function () {
     <li>
       <a href="obitos_por_estado_covid19.html">Óbitos por estado</a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Estados
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Santa Catarina</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_SC_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_florianopolis_covid19.html">Florianópolis</a>
-        </li>
-        <li>
-          <a href="cidade_joinvile_covid19.html">Joinville</a>
-        </li>
-      </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Paraná</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_PR_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_curitiba_covid19.html">Curitiba</a>
-        </li>
-      </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Rio Grande do Sul</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="estado_RS_covid19.html">Análises do estado</a>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-header">Cidades</li>
-        <li class="divider"></li>
-        <li>
-          <a href="cidade_portoalegre_covid19.html">Porto Alegre</a>
-        </li>
-      </ul>
-    </li>
+    <li class="divider"></li>
     <li>
       <a href="comparativo_estados_covid19.html">Comparativo entre estados</a>
     </li>
+    <li class="divider"></li>
+    <li>
+      <a href="incidencia_estados_covid19.html">Incidência nos estados</a>
+    </li>
+    <li class="divider"></li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Subnotificação
+    Santa Catarina
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="subnotificacao_covid19.html">Nota técnica</a>
+      <a href="estado_SC_covid19.html">Análises do estado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="leitos_SC_covid19.html">Leitos Hospitalares</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="mapas_sc_covid19.html">Mapas</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="comparativo_sc_covid19.html">Comparativos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="subnotificacao_covid19.html">Subnotificação</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Macroregiões</li>
+    <li class="divider"></li>
+    <li>
+      <a href="regiao_fln_covid19.html">Grande Florianópolis</a>
+    </li>
+    <li>
+      <a href="regiao_fi_covid19.html">Foz do Itajaí</a>
+    </li>
+    <li>
+      <a href="regiao_pnne_covid19.html">Planalto N/NE</a>
+    </li>
+    <li>
+      <a href="regiao_av_covid19.html">Alto Vale</a>
+    </li>
+    <li>
+      <a href="regiao_mo_covid19.html">Meio Oeste</a>
+    </li>
+    <li>
+      <a href="regiao_sul_covid19.html">Região Sul</a>
+    </li>
+    <li>
+      <a href="regiao_go_covid19.html">Grande Oeste</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cidades</li>
+    <li class="divider"></li>
+    <li>
+      <a href="cidade_florianopolis_covid19.html">Florianópolis</a>
+    </li>
+    <li>
+      <a href="cidade_joinvile_covid19.html">Joinville</a>
     </li>
   </ul>
 </li>
@@ -403,12 +420,21 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência </a>
+      <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência - remdesivir </a>
     </li>
   </ul>
 </li>
-<li>
-  <a href="equipe.html">Equipe</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Equipe/News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="equipe.html">Equipe</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -446,6 +472,17 @@ $(document).ready(function () {
 <h2>Motivação</h2>
 <p><br></br></p>
 <p>Compreender a dinâmica do novo coronavírus e seus impactos na saúde pública, analisar, sob a ótica da ciência, o cenário epidemiológico e avaliar os potenciais cenários do avanço da COVID-19 no estado de Santa Catarina. Assim, espera-se ajudar no enfrentamento deste grave surto epidemiológico baseado nos esforços para coletar, organizar, analisar e apresentar as informações à sociedade catarinense visando transmitir o conhecimento adquirido para aumentar o nível de esclarecimento da população sobre a pandemia no estado. Além disso, espera-se que o conteúdo aqui apresentado também possa dar suporte aos gestores públicos na tomada de decisões para melhor enfrentamento e supressão da pandemia da COVID-19 no estado.</p>
+<p><br></br></p>
+</div>
+<div id="grupo-covid19-sc-na-mídia" class="section level2">
+<h2>Grupo COVID19-SC na mídia</h2>
+<p><br></br></p>
+<ul>
+<li><p><a href="https://www.youtube.com/watch?v=J3lKnjXv3J0">UFSC Live: subnotificação de Covid-19 em Santa Catarina</a></p></li>
+<li><p><a href="https://g1.globo.com/sc/santa-catarina/noticia/2020/05/06/apos-reabertura-do-comercio-casos-de-coronavirus-triplicam-em-sc.ghtml">Após reabertura do comércio, casos de coronavírus triplicam em SC | Santa Catarina | G1</a></p></li>
+<li><p><a href="https://www.univille.edu.br/noticias/2020.5/scpodeter68milinfectados,indicapesquisa/884861#.XriFp91A8cA.twitter">SC pode ter 65 mil infectados, indica pesquisa sobre subnotificação Dados apontam que o número de óbitos, principal indicador do cálculo, pode superar estatística oficial em 260%</a></p></li>
+<li><p><a href="https://www.nsctotal.com.br/noticias/coronavirus-cientistas-de-sc-apontam-boom-de-casos-no-estado-se-isolamento-for-amenizado">Coronavírus: Cientistas de SC apontam ‘boom’ de casos no Estado se isolamento for amenizado</a></p></li>
+</ul>
 </div>
 
 
