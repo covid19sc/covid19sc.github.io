@@ -23,6 +23,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -462,19 +466,32 @@ $(document).ready(function () {
 
 
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 13-05-2020
+Atualizado em: 14-05-2020
 </button>
 <button type="button" class="btn btn-warning disabled">
 Em construção
 </button>
-<p><br></br></p>
-<p>Em construção</p>
-<div class="progress">
-<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 10%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+<div id="casos-por-100-000-mil-habitantes" class="section level1">
+<h1>Casos por 100 000 mil habitantes</h1>
+<div id="incidência-na-região-por-data" class="section level2">
+<h2>Incidência na região por data</h2>
+<p>Selecione a data da avaliação</p>
 
+<html>
+<select id="1Oiu23QkMq" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/macroregiao_100M_GRANDE FLORIANÓPOLIS_2020-05-13.png">2020-05-13</option></select>
+<img src="fig/macroregiao_100M_GRANDE FLORIANÓPOLIS_2020-05-13.png" name="nUoPjj7rrV" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#1Oiu23QkMq").change(function(){
+                 $("img[name=nUoPjj7rrV]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-8291a2ae8a00e4b543df" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-8291a2ae8a00e4b543df">{"x":[],"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p><br></br></p>
 
 
 
