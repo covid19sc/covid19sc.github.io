@@ -23,6 +23,11 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/bootstrap-select-1.12.1/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-select-1.12.1/dist/js/bootstrap-select.min.js"></script>
+<script src="site_libs/bsselect-binding-0.1.0/bsselect.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
 <script>
@@ -455,9 +460,112 @@ Atualizado em: 23-05-2020
 Em construção
 </button>
 <p><br></br></p>
-<div id="resumo" class="section level2">
-<h2>Resumo</h2>
-<p><img src="fig/mapa_07_05.jpeg" width="100%" /><img src="fig/mapa_28_04.jpeg" width="100%" /><img src="fig/mapa_2.jpeg" width="100%" /><img src="fig/mapa_3.jpeg" width="100%" /><img src="fig/mapa_4.jpeg" width="100%" /><img src="fig/mapa_5.jpeg" width="100%" /><img src="fig/mapa_6.jpeg" width="100%" /><img src="fig/mapa_7.jpeg" width="100%" /><img src="fig/mapa_8.jpeg" width="100%" /></p>
+<div id="incidência-de-casos-nos-municípios-por-data-por-100-000-mil-habitantes" class="section level2">
+<h2>Incidência de casos nos municípios por data por 100 000 mil habitantes</h2>
+<p>A incidência nacional é calculada a cada dia, desta forma a classificação é refeita diariamente em função da incidência nacional na data.</p>
+<p><br></br></p>
+<p><strong>Selecione a data: </strong> 
+<html>
+<select id="1Oiu23QkMq" class="selectpicker" data-dropdown-align-right="false" data-dropup-auto="true" data-header="false" data-live-search="true" data-live-search-style="contains" data-show-tick="true" data-width="false" data-size="auto"><option value="fig/mapa_SC_incidencia_2020-05-21.png">2020-05-21</option>
+<option value="fig/mapa_SC_incidencia_2020-05-20.png">2020-05-20</option>
+<option value="fig/mapa_SC_incidencia_2020-05-19.png">2020-05-19</option>
+<option value="fig/mapa_SC_incidencia_2020-05-18.png">2020-05-18</option>
+<option value="fig/mapa_SC_incidencia_2020-05-17.png">2020-05-17</option>
+<option value="fig/mapa_SC_incidencia_2020-05-16.png">2020-05-16</option>
+<option value="fig/mapa_SC_incidencia_2020-05-15.png">2020-05-15</option>
+<option value="fig/mapa_SC_incidencia_2020-05-14.png">2020-05-14</option>
+<option value="fig/mapa_SC_incidencia_2020-05-13.png">2020-05-13</option>
+<option value="fig/mapa_SC_incidencia_2020-05-12.png">2020-05-12</option>
+<option value="fig/mapa_SC_incidencia_2020-05-11.png">2020-05-11</option>
+<option value="fig/mapa_SC_incidencia_2020-05-10.png">2020-05-10</option>
+<option value="fig/mapa_SC_incidencia_2020-05-09.png">2020-05-09</option>
+<option value="fig/mapa_SC_incidencia_2020-05-08.png">2020-05-08</option>
+<option value="fig/mapa_SC_incidencia_2020-05-07.png">2020-05-07</option>
+<option value="fig/mapa_SC_incidencia_2020-05-06.png">2020-05-06</option></select>
+<img src="fig/mapa_SC_incidencia_2020-05-21.png" name="nUoPjj7rrV" height="500" width="100%"/>
+<script>$(document).ready(function(){
+                 $("#1Oiu23QkMq").change(function(){
+                 $("img[name=nUoPjj7rrV]").attr("src",$(this).val());
+
+                 });
+
+  });</script>
+</html>
+<div id="htmlwidget-8291a2ae8a00e4b543df" style="width:672px;height:10px;" class="bsselect html-widget" width="672" height="10"></div>
+<script type="application/json" data-for="htmlwidget-8291a2ae8a00e4b543df">{"x":[],"evals":[],"jsHooks":[]}</script></p>
+<p><br></br></p>
+<pre class="r"><code>text_tbl &lt;- data.frame(
+  Alertas = c(&quot;Incidência Nacional&quot;, &quot;Emergência&quot;, &quot;Atenção&quot;, &quot;Alerta&quot;),
+  Detalhamento = c(
+    &quot;Número de casos confirmados/População * 100 000 habitantes&quot;,
+    &quot;50% acima da incidência nacional&quot;, 
+    &quot;entre +-50% da incidência nacional&quot;,
+    &quot;abaixo de 50% da incidência nacional&quot;
+  )
+)
+
+pal &lt;- c(
+  &quot;Incidência Nacional&quot; = &quot;black&quot;,
+  &quot;Emergência&quot;          = &quot;#ff0000&quot;, 
+  &quot;Atenção&quot;             = &quot;#ffc000&quot;, 
+  &quot;Alerta&quot;              = &quot;#00b050&quot;)
+
+library(knitr)
+library(kableExtra)
+
+kable(text_tbl) %&gt;%
+  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
+  column_spec(1, bold = T) %&gt;%
+  row_spec(1, bold = T, color = &quot;white&quot;, background = &quot;black&quot;)  %&gt;%
+  row_spec(2, bold = T, color = &quot;white&quot;, background = &quot;#ff0000&quot;)  %&gt;%
+  row_spec(3, bold = T, color = &quot;white&quot;, background = &quot;#ffc000&quot;)  %&gt;%
+  row_spec(4, bold = T, color = &quot;white&quot;, background = &quot;#00b050&quot;) </code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Alertas
+</th>
+<th style="text-align:left;">
+Detalhamento
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;font-weight: bold;color: white !important;background-color: black !important;">
+Incidência Nacional
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: black !important;">
+Número de casos confirmados/População * 100 000 habitantes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;font-weight: bold;color: white !important;background-color: #ff0000 !important;">
+Emergência
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: #ff0000 !important;">
+50% acima da incidência nacional
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;font-weight: bold;color: white !important;background-color: #ffc000 !important;">
+Atenção
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: #ffc000 !important;">
+entre +-50% da incidência nacional
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;font-weight: bold;color: white !important;background-color: #00b050 !important;">
+Alerta
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: #00b050 !important;">
+abaixo de 50% da incidência nacional
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
