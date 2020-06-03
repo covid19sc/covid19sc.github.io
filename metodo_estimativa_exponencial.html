@@ -397,6 +397,10 @@ $(document).ready(function () {
     <li>
       <a href="modelo_SEIR_modificado_covid19.html">Modelo SEIR modificado</a>
     </li>
+    <li class="divider"></li>
+    <li>
+      <a href="modelo_icl_covid19.html">Modelo Imperial College London</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -408,6 +412,9 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência - remdesivir </a>
+    </li>
+    <li>
+      <a href="coronavirus.html">Os Coronavírus</a>
     </li>
   </ul>
 </li>
@@ -452,7 +459,7 @@ $(document).ready(function () {
 Primeira vez online: 25/04/2020
 </button>
 <button type="button" class="btn btn-success disabled">
-Atualizado em: 02-06-2020
+Atualizado em: 03-06-2020
 </button>
 <button type="button" class="btn btn-warning disabled">
 Em construção
@@ -501,8 +508,8 @@ Exemplo de modelo exponencial de crescimento
 <div id="números-bruto-de-casos-confirmados" class="section level2">
 <h2>Números bruto de casos confirmados</h2>
 <p>Nossos dados vêm do <a href="https://brasil.io/dataset/covid19/caso">Brasil.IO</a>, que é atualizado diariamente. Esses dados relatam o número acumulado de indivíduos confirmados com infecção de covid-19 (<span class="math inline">\(I(t)\)</span>) e o número de óbitos (<span class="math inline">\(D(t)\)</span>) em cada cidade do país.</p>
-<div id="modelo-de-crescimento-e-previsão-de-casos-confirmados-de-covid-19" class="section level3">
-<h3>Modelo de crescimento e previsão de casos confirmados de covid-19</h3>
+<div id="modelo-de-crescimento-e-previsão-de-casos-confirmados-de-covid-19-deprecated---substituido-pelo-modelo-de-gompertz" class="section level3">
+<h3>Modelo de crescimento e previsão de casos confirmados de covid-19 [deprecated - substituido pelo modelo de Gompertz]</h3>
 <p>Estamos interessados em saber como o número de casos confirmados vai mudar no curto prazo, e para isso utilizaremos o modelo exponencial. Assim, assumimos que casos confirmados seguem um modelo de crescimento exponencial em fases inciais da pandemia, tal que <span class="math inline">\(E[I(t)] = I_0e^{rt}\)</span>, que é o que se espera (valor esperado) em média do número de casos confirmados, ou seja o modelo exponencial <span class="math inline">\(I(t) = I_0e^{rt}\)</span>, onde o valor dado pelo modelo será considerado um valor médio.</p>
 <p>Sabe-se que a dinâmica do crescimento do número de infectados é mais complexa do que isso, e para tanto vários <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">modelos epidemiológicos compartimentais</a> como SIR, SEIR entre outros podem ser utilizados, bem como modelos <a href="https://www.imperial.ac.uk/mrc-global-infectious-disease-analysis/covid-19/report-13-europe-npi-impact/">probabilísticos</a>.</p>
 <p>Os dados disponibilizados até o presente momento estão relacionados com a fase inicial da dissiminação da doença e esse tópico trata somente de uma análise de curto prazo e para isso o modelo exponencial pode fornecer uma <strong>aproximação razoável</strong>.</p>
