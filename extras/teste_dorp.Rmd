@@ -1,0 +1,67 @@
+---
+title: "TESTE de Dropdown - Alertas"
+output:
+  html_document:
+    toc: false
+---
+
+```{r, echo = FALSE}
+library(stringr)
+library(bsselectR)
+
+state_plots <- paste0(list.files("fig", full.names = TRUE))
+alerta = state_plots[str_detect(state_plots,"Alerta")]
+names(alerta) <- str_replace_all(alerta,c("\\.png" = "","fig/" = "", "Alerta_" = ""))
+
+bsselect(alerta, type = "img", selected = "Casos", live_search = TRUE, show_tick = TRUE, frame_height = "500", frame_width = "100%",height = "10")
+
+figuras <- paste0(list.files("fig", full.names = TRUE))
+anim = figuras[str_detect(figuras,"plot_anim")]
+names(anim) <- str_replace_all(anim,c("\\.gif" = "","fig/plot_anim_" = ""))
+
+bsselect(anim, type = "img", selected = "SC", live_search = TRUE, show_tick = TRUE,)
+# align_right = FALSE,
+# dropup_auto = TRUE,
+# header = FALSE,
+# live_search = FALSE,
+# box_width = FALSE,
+# live_search_style = "contains",
+# show_tick = FALSE,
+# size = "auto",
+# style = NULL,
+# width = NULL,
+# height = NULL,
+# elementId = NULL,
+
+bsselect(anim, type = "img", selected = "SC", live_search = TRUE, show_tick = TRUE)
+
+```
+
+
+<!-- ```{r, animacoes, echo = FALSE} -->
+<!-- library(stringr) -->
+<!-- library(bsselectR) -->
+
+<!-- figuras <- paste0(list.files("fig", full.names = TRUE)) -->
+
+<!-- anim = figuras[str_detect(figuras,"plot_anim")] -->
+
+<!-- names(anim) <- str_replace_all(anim,c("\\.gif" = "","fig/plot_anim_" = "")) -->
+
+<!-- bsselect(anim, type = "img", selected = "SC", live_search = TRUE, show_tick = TRUE) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r, animacoes2, echo = FALSE} -->
+<!-- library(stringr) -->
+<!-- library(bsselectR) -->
+
+<!-- figuras <- paste0(list.files("fig", full.names = TRUE)) -->
+
+<!-- anim = figuras[str_detect(figuras,"plot_anim")] -->
+
+<!-- names(anim) <- str_replace_all(anim,c("\\.gif" = "","fig/plot_anim_" = "")) -->
+
+<!-- bsselect(anim, type = "img", selected = "SC", live_search = TRUE, show_tick = TRUE) -->
+<!-- ``` -->

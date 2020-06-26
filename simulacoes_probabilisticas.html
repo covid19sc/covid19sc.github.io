@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Simulação estocástica</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-76878372-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-76878372-3');
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">COVID19-SC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Brasil
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="comparativo_paises_covid19.html">Comparativos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="evolucao_brasil_covid19.html">Evolução no país</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Estados
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="evolucao_temporal_covid19.html">Evolução temporal por estado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="infectados_por_estado_covid19.html">Infectados por estado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="obitos_por_estado_covid19.html">Óbitos por estado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="incidencia_estados_covid19.html">Incidência nos estados</a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Santa Catarina
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="resumo_SC_covid19.html">Resumo SC</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="municipios_SC_covid19.html">Municípios</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Macrorregiões</li>
+    <li class="divider"></li>
+    <li>
+      <a href="regiao_fln_covid19.html">Grande Florianópolis</a>
+    </li>
+    <li>
+      <a href="regiao_fi_covid19.html">Foz do Itajaí</a>
+    </li>
+    <li>
+      <a href="regiao_pnne_covid19.html">Planalto N/NE</a>
+    </li>
+    <li>
+      <a href="regiao_av_covid19.html">Alto Vale</a>
+    </li>
+    <li>
+      <a href="regiao_mo_covid19.html">Meio Oeste</a>
+    </li>
+    <li>
+      <a href="regiao_sul_covid19.html">Região Sul</a>
+    </li>
+    <li>
+      <a href="regiao_go_covid19.html">Grande Oeste</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="mapas_sc_covid19.html">Mapas</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="leitos_SC_covid19.html">Leitos Hospitalares</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="subnotificacao_covid19.html">Subnotificação</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Métodos/Modelos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Métodos</li>
+    <li class="divider"></li>
+    <li>
+      <a href="metodo_estimativa_exponencial.html">Método ajuste exponencial</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Modelos matemáticos</li>
+    <li class="divider"></li>
+    <li>
+      <a href="modelo_SEIR_modificado_covid19.html">Modelo SEIR modificado</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="modelo_icl_covid19.html">Modelo Imperial College London</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="simulacoes_3d_covid19.html">Simulações</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Artigos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="remdesivir_ensaios_clinicos.html">Avanços na ciência - remdesivir </a>
+    </li>
+    <li>
+      <a href="coronavirus.html">Os Coronavírus</a>
+    </li>
+    <li>
+      <a href="simulacoes_probabilisticas.html">Simulação estocástica</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Equipe
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="equipe.html">Equipe</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore"><strong>Simulação estocástica</strong></h1>
+
+</div>
+
+
+<p><span style="color:#66023C; font-size:150%; font-weight:600"><strong>Simulações para análise do impacto da retomada de atividades presenciais de ensino na UFSC</strong> </span></p>
+<p><font size="4"> <em>Feres Azevedo Salem, Ubirajara Franco Moreno (UFSC)</em> </font></p>
+<p><font size="4"> <em>Pós-Graduação em Engenharia de Automação e Sistemas, CTC/UFSC</em> </font></p>
+<p><em>25/06/2020</em></p>
+<div id="apresentação" class="section level2">
+<h2>Apresentação</h2>
+<p>Os desdobramentos da retomada das atividades na UFSC no quadro da pandemia COVID-19, traz impacto direto para uma comunidade de cerca de 50 mil integrantes e tem um potencial efeito em toda a comunidade da cidade de Florianópolis. O objetivo deste trabalho é fornecer a gestores e tomadores de decisão, o resultado de simulações em larga escala para a análise de cenários de disseminação de vírus. Estas simulações são baseadas em modelos epidemiológicos e de comportamento social, permitindo modelar cada indivíduo de uma população, considerando fatores de risco, padrões de interação com outros indivíduos, taxa de contágio e recuperação. Nos cenários avaliados, é possível realizar um acompanhamento diário da evolução de regimes epidêmicos e elaborar estatísticas da evolução destes quadros. Os modelos implementados acompanham o estado da arte em modelos de expansão virais e incorporam os modelos mais recentes que consideram as últimas pesquisas acerca dos modelos referentes ao COVID-19. Considerou-se como cenário, um prédio de grande porte de salas de aula UFSC, e analisou-se o efeito da limitação do número de alunos por sala e o número de interações sociais no espaço de sala de aula e nas áreas comuns e de circulação das edificações. Na sequência é apresentada uma breve descrição do modelo de simulação, os resultados obtidos nas simulações e possíveis conclusões.</p>
+<div id="modelo-e-resultados-de-simulação" class="section level3">
+<h3>Modelo e Resultados de Simulação</h3>
+<p>O modelo utilizado para as simulações é baseado em uma representação de relações sociais entre indivíduos (), e um quadro de evolução do estado destes agentes em função de possiveis contágios.</p>
+<p>Para explicar a formulação do modelo de simulação, optou-se por dividi-lo em duas partes: o modelo dos agentes, que define como cada pessoa se comporta “internamente”, como elas passam de um estado para outro; e o modelo da rede, o qual indica quais são as possíveis interações entre os diferentes agentes na simulação. A seguir serão dados mais detalhes para ambos os componentes do modelo.</p>
+<p>A Figura 1 ilustra a evolução de estados, escolhida para representar os agentes na presente análise. Estes estados são equivalentes aos compartimentos considerados em modelos epidemiológicos amplamente usados na literatura (modelos SEIR)</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/maquina-estados.png" alt="Figura 1. Estados dos indivíduos, sendo: S - Suscetível; E - Exposto; I - Infectado; R - Removido" width="60%" />
+<p class="caption">
+Figura 1. Estados dos indivíduos, sendo: S - Suscetível; E - Exposto; I - Infectado; R - Removido
+</p>
+</div>
+<ul>
+<li>[S] Suscetível: Pessoa que nunca foi infectada pelo vírus e, portanto, pode passar para o estado Exposto ao entrar em contato com um Infectado;</li>
+<li>[E] Exposto: Pessoa que teve contato com um Infectado e contraiu o vírus, porém ainda não possui carga viral o suficiente para transmitir para outras pessoas;</li>
+<li>[I] Infectado: Pessoa que contraiu o vírus já há algum tempo e, caso ocorra um contato, é capaz de infectar Suscetíveis;</li>
+<li>[R] Removido: Pessoa que entrou em quarentena após apresentar sintomas o que contraiu o vírus e já passou do período em que poderia infectar outras pessoas</li>
+</ul>
+<p>As transições entre os estados da Figura 1 ocorrem a partir de eventos aleatórios seguindo padrões estatísticos da COVID-19, extraídos de bases de dados nacionais e internacionais.</p>
+<p>O contágio, a transição de um agente de [S] para [E], ocorre quando o agente em [S], suscetivel, interage aleatoriamente com outro que esteja no estado [I], infectado, e seguindo uma distribuição de probabilidade é exposto ao vírus. Esta probalidade depende das medidas de precaução adotadas pelos agentes, nas simulações realizadas considerou-se um grupo majoritário que segue as recomendações de proteção e um grupo minoritário, designado como relapso, que não segue adequadamente as recomendações.</p>
+<p>As outras duas transições, de [E] para [I] e de [I] para [R], ocorrem a partir do número de dias de cada transição. Isso é, existe uma probabilidade da transição ocorrer em um dado dia, a contar do dia de entrada no estado atual. As Figuras 2 e 3 ilustram essas probabilidades.</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/probabilidades_t2.png" alt="Figura 2. Probabilidades de transição de exposto (E) para infectado (I) em função do número de dias desde a transição a partir do estado suscetível (S)" width="60%" />
+<p class="caption">
+Figura 2. Probabilidades de transição de exposto (E) para infectado (I) em função do número de dias desde a transição a partir do estado suscetível (S)
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="imgs/probabilidades_t3.png" alt="Figura 3. Probabilidades de transição de infectado (I) para removido (R) em função do número de dias desde a transição a partir do estado exposto (E)" width="60%" />
+<p class="caption">
+Figura 3. Probabilidades de transição de infectado (I) para removido (R) em função do número de dias desde a transição a partir do estado exposto (E)
+</p>
+</div>
+<p>Para o modelo de interação social foi considerado um único prédio da UFSC, sendo composto por 52 salas de aula, havendo uma rede de contatos internos para cada sala de aula representado na figura 4, e uma rede de contatos correspondente aos espaços comuns e de circulação, representada na figura 5. Nas simulações variou-se a ocupação das salas e o número de possíveis interações socias diárias.</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/grafo_clusters.png" alt="Figura 4. Grafo representando os clusters (salas de aula) isolados uns dos outros" width="60%" />
+<p class="caption">
+Figura 4. Grafo representando os clusters (salas de aula) isolados uns dos outros
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="imgs/grafo_geral.png" alt="Figura 5. Exemplo de grafo representando interações aleatórias entre todos os nós" width="60%" />
+<p class="caption">
+Figura 5. Exemplo de grafo representando interações aleatórias entre todos os nós
+</p>
+</div>
+</div>
+<div id="cenários-simulados-e-resultados" class="section level3">
+<h3>Cenários Simulados e Resultados</h3>
+<p>Foram considerados três cenários diferentes para as simulações. Em todos eles foi definido que a probailidade de contágio na interação entre um agente no estado [S] e outra no estado [I]) é de 0.03 (3%) e de 0.15 (15%) no caso de uma agente pertencer ao grupo designado como relapso, sendo que este grupo representa 5% da população total. E o número de indivíduos inicialmente no estado [I], ou seja, em codição de contagiar outros indivíduos, corresponde a 0,5% da população total. Durante o intervalo de simulação não foram considerados novos contágios externos e considerou-se tabém um cenário otimista quanto à cpacidade de detecção e isolamento de alunos sintomáticos. Não foi considerado também um comportamento específico para os docentes em sala. Nas simulações foi avaliada a influência da ocupação das salas de aulas e a correspondente dimunuição do número de interações sociais.O nome utilizado para representar cada cenário indica o valor escolhido o número de alunos por sala, o número de interações diárias dentro da sala e o número de interações diárias nos espaçõs comuns e de circulação. Estes cenários são designados como: ;  e . Todas simulações foram realizadas para um horizonte de 30 dias e para cada cenário foram executadas 100 simulações.Um vídeo ilustrativo está disponível em <a href="https://bit.ly/sim_covid_ufsc">sim_covid_ufsc</a>.</p>
+<p>Como mencionado anteriormente, foram executadas 100 simulações para cada cenário. Todas as simulações tiveram duração de 30 dias, sendo que o dado referente ao 31<span class="math inline">\(^{o}\)</span> dia é apresentado para indicar a situação ao final do 30<span class="math inline">\(^{o}\)</span>. Isso é mesmo que dizer que o estado final em um dia é o estado inicial do dia seguinte.</p>
+<p>Nas Figuras 6 e 7 mostram-se os resultados para o cenário <strong>20-10-6</strong>, sendo que a Figura 6 representa-se os valores médios e desvio padrão para o conjunto de 100 simulações e na Figura 7 representa-se somente os valores médios normalizados em relação ao total da população, a soma das barras empilhadas representa o total acumulado de alunos que foram ou estão infectados a cada um dos 30 dias.</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot1_20-10-6.png" alt="Figura 6. Média e desvio padrão da evolução da pandemia no cenário 20 alunos" width="60%" />
+<p class="caption">
+Figura 6. Média e desvio padrão da evolução da pandemia no cenário 20 alunos
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot3_20-10-6.png" alt="Figura 7. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 20 alunos" width="60%" />
+<p class="caption">
+Figura 7. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 20 alunos
+</p>
+</div>
+<p>Nas Figuras 8 e 9 mostram-se os resultados para o cenário .</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot1_15-7-4.png" alt="Figura 8. Média e desvio padrão da evolução da pandemia no cenário 15 alunos" width="60%" />
+<p class="caption">
+Figura 8. Média e desvio padrão da evolução da pandemia no cenário 15 alunos
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot3_15-7-4.png" alt="Figura 9. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 15 alunos" width="60%" />
+<p class="caption">
+Figura 9. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 15 alunos
+</p>
+</div>
+<p>Nas Figuras 10 e 11 mostram-se os resultados para o cenário .</p>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot1_10-5-4.png" alt="Figura 10. Média e desvio padrão da evolução da pandemia no cenário 10 alunos" width="60%" />
+<p class="caption">
+Figura 10. Média e desvio padrão da evolução da pandemia no cenário 10 alunos
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="imgs/plot3_10-5-4.png" alt="Figura 11. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 10 alunos" width="60%" />
+<p class="caption">
+Figura 11. Gráfico de barras empilhadas da porcentagem média de pessoas que contraíram o vírus, para o cenário 10 alunos
+</p>
+</div>
+</div>
+<div id="conclusões" class="section level3">
+<h3>Conclusões</h3>
+<p>Mesmo considerando uma probabilidade de infecção baixa e um cenário otimista em relação à capacidade de detecção e remoçao dos casos sintomáticos, a retomada das atividades presenciais na UFSC pode levar a uma nova onda de infecções afetando a comunidade universitária tendo impacto na comunidade local. Todavia, as simulações indicam que uma restrição no número de alunos por sala pode ser efetivo na diminuição do contágio. Para um cenário com salas ocupadas por 20 alunos, cerca de 19% da população total ao final de 30 dias seria afetada. Sendo que salas com 10 alunos levaria a infecção de pouco mais de 8% do total de alunos. Vale lembrar que ambos os cenários partem de 0,5% de infectados.</p>
+<p>Apesar dessa restrição impactar positivamente, ela não é suficiente para conter o espalhamento do vírus no campus de forma definitiva. Seria necessária alguma medida para diminuir o tempo em que as pessoas podem infectar outras (estado [I]). Mas uma testagem de todos os alunos, todos os dias, ou mesmo a cada 2 dias, é algo inviável.</p>
+<p>Assim, verifica-se a existência de um elevado risco associado a uma possível retomada de forma segura, para atividades totalmente presenciais em um futuro próximo. A diminuição deste risco está associada à restrição do número de contatos, seja pela redução ocupação das salas e do tempo de permanência dos alunos na instituição. É importante ressaltar que neste estudo não é considerada a contaminação no deslocamento para a instituição, nem a interação com os modelos de propagação no cidade como um todo, o que seria um importante fator de agravamento.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
